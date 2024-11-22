@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -30,20 +31,58 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void FormEmployeeTerritories_Load(object sender, EventArgs e)
         {
             refreshPantallaET();
+
+            string query1 = "select EmployeeID, FirstName from Employees";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query1, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias2 = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias2);
+
+                // Asignar el DataTable al ComboBox
+                boxEmployeeID.DataSource = dtCategorias2;
+                boxEmployeeID.DisplayMember = "FirstName"; // Columna que se muestra en el ComboBox
+                boxEmployeeID.ValueMember = "EmployeeID"; // Valor interno que representa al ítem seleccionado
+            }
+
+            string query2 = "select TerritoryID, TerritoryDescription from territories";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxTerritoryID.DataSource = dtCategorias;
+                boxTerritoryID.DisplayMember = "TerritoryDescription"; // Columna que se muestra en el ComboBox
+                boxTerritoryID.ValueMember = "TerritoryID"; // Valor interno que representa al ítem seleccionado
+            }
         }
 
         private void dataGridViewET_SelectionChanged(object sender, EventArgs e)
         {
-            txtEmployeeID.Text = Convert.ToString(dataGridViewET.CurrentRow.Cells["EmployeeID"].Value);
-            txtTerritoryID.Text = Convert.ToString(dataGridViewET.CurrentRow.Cells["TerritoryID"].Value);
+            boxEmployeeID.Text = Convert.ToString(dataGridViewET.CurrentRow.Cells["EmployeeID"].Value);
+            boxTerritoryID.Text = Convert.ToString(dataGridViewET.CurrentRow.Cells["TerritoryID"].Value);
         }
 
         private void butGuardar_Click(object sender, EventArgs e)
         {
             EmployeeTerritories employeeTerritories = new EmployeeTerritories();
 
-            employeeTerritories.EmployeeID = Convert.ToInt32(txtEmployeeID.Text);
-            employeeTerritories.TerritoryID = txtTerritoryID.Text;
+            employeeTerritories.EmployeeID = Convert.ToInt32(boxEmployeeID.SelectedValue);
+            employeeTerritories.TerritoryID = Convert.ToString(boxTerritoryID.SelectedValue);
 
 
             if (dataGridViewET.SelectedRows.Count == 1)
@@ -84,8 +123,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void butNuevo_Click(object sender, EventArgs e)
         {
             dataGridViewET.CurrentCell = null;
-            txtEmployeeID.Clear();
-            txtTerritoryID.Clear();
+            boxEmployeeID.Text = "";
+            boxTerritoryID.Text = "";
         }
 
         private void butEliminar_Click(object sender, EventArgs e)
@@ -188,6 +227,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             txtBuscarET.Text = "";
             txtBuscarET.ForeColor = Color.Black;
         }
+
     }
 }
 

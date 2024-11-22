@@ -359,35 +359,38 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // butEliminarSuppliers
             // 
-            butEliminarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butEliminarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butEliminarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butEliminarSuppliers.Location = new Point(133, 643);
             butEliminarSuppliers.Name = "butEliminarSuppliers";
             butEliminarSuppliers.Size = new Size(148, 45);
             butEliminarSuppliers.TabIndex = 31;
             butEliminarSuppliers.Text = "Eliminar";
-            butEliminarSuppliers.UseVisualStyleBackColor = true;
+            butEliminarSuppliers.UseVisualStyleBackColor = false;
             butEliminarSuppliers.Click += butEliminarSuppliers_Click;
             // 
             // butNuevoSuppliers
             // 
-            butNuevoSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butNuevoSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butNuevoSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butNuevoSuppliers.Location = new Point(229, 592);
             butNuevoSuppliers.Name = "butNuevoSuppliers";
             butNuevoSuppliers.Size = new Size(148, 45);
             butNuevoSuppliers.TabIndex = 30;
             butNuevoSuppliers.Text = "Nuevo Registro";
-            butNuevoSuppliers.UseVisualStyleBackColor = true;
+            butNuevoSuppliers.UseVisualStyleBackColor = false;
             butNuevoSuppliers.Click += butNuevoSuppliers_Click;
             // 
             // butGuardarSuppliers
             // 
-            butGuardarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butGuardarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butGuardarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butGuardarSuppliers.Location = new Point(33, 592);
             butGuardarSuppliers.Name = "butGuardarSuppliers";
             butGuardarSuppliers.Size = new Size(148, 45);
             butGuardarSuppliers.TabIndex = 29;
             butGuardarSuppliers.Text = "Guardar/Modificar";
-            butGuardarSuppliers.UseVisualStyleBackColor = true;
+            butGuardarSuppliers.UseVisualStyleBackColor = false;
             butGuardarSuppliers.Click += butGuardarSuppliers_Click;
             // 
             // txtContactName
@@ -454,22 +457,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // butRefrescarSuppliers
             // 
+            butRefrescarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butRefrescarSuppliers.Location = new Point(902, 28);
             butRefrescarSuppliers.Name = "butRefrescarSuppliers";
             butRefrescarSuppliers.Size = new Size(108, 61);
             butRefrescarSuppliers.TabIndex = 39;
             butRefrescarSuppliers.Text = "Refrescar";
-            butRefrescarSuppliers.UseVisualStyleBackColor = true;
+            butRefrescarSuppliers.UseVisualStyleBackColor = false;
             butRefrescarSuppliers.Click += butRefrescarSuppliers_Click;
             // 
             // butBuscarSuppliers
             // 
+            butBuscarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butBuscarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butBuscarSuppliers.Location = new Point(762, 28);
             butBuscarSuppliers.Name = "butBuscarSuppliers";
             butBuscarSuppliers.Size = new Size(108, 61);
             butBuscarSuppliers.TabIndex = 38;
             butBuscarSuppliers.Text = "Buscar";
-            butBuscarSuppliers.UseVisualStyleBackColor = true;
+            butBuscarSuppliers.UseVisualStyleBackColor = false;
             butBuscarSuppliers.Click += butBuscarSuppliers_Click;
             // 
             // boxBuscarSuppliers

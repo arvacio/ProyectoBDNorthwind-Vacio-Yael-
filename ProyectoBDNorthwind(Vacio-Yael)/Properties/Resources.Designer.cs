@@ -59,5 +59,115 @@ namespace ProyectoBDNorthwind_Vacio_Yael_.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM__1_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM__2_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM__3_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM__4_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM (4)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM__5_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_25_AM {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.25 AM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_25_AM__2_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.25 AM (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_25_AM__5_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.25 AM (5)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_25_AM__7_ {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.25 AM (7)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_111 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.111", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

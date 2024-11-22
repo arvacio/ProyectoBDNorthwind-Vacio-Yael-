@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
+            boxEmployeeID = new ComboBox();
+            boxCustomerID = new ComboBox();
             panel1 = new Panel();
             txtOrderID = new TextBox();
             label2 = new Label();
@@ -57,9 +59,7 @@
             label6 = new Label();
             dtpOrderDate = new DateTimePicker();
             label5 = new Label();
-            txtEmployeeID = new TextBox();
             label4 = new Label();
-            txtCustomerID = new TextBox();
             label3 = new Label();
             label1 = new Label();
             panelP = new Panel();
@@ -83,6 +83,8 @@
             // panel2
             // 
             panel2.BackColor = Color.LightSkyBlue;
+            panel2.Controls.Add(boxEmployeeID);
+            panel2.Controls.Add(boxCustomerID);
             panel2.Controls.Add(panel1);
             panel2.Controls.Add(butEliminarOrders);
             panel2.Controls.Add(butNuevoOrders);
@@ -109,15 +111,29 @@
             panel2.Controls.Add(label6);
             panel2.Controls.Add(dtpOrderDate);
             panel2.Controls.Add(label5);
-            panel2.Controls.Add(txtEmployeeID);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(txtCustomerID);
             panel2.Controls.Add(label3);
             panel2.Controls.Add(label1);
             panel2.Location = new Point(12, 44);
             panel2.Name = "panel2";
             panel2.Size = new Size(414, 688);
             panel2.TabIndex = 44;
+            // 
+            // boxEmployeeID
+            // 
+            boxEmployeeID.FormattingEnabled = true;
+            boxEmployeeID.Location = new Point(174, 145);
+            boxEmployeeID.Name = "boxEmployeeID";
+            boxEmployeeID.Size = new Size(220, 28);
+            boxEmployeeID.TabIndex = 34;
+            // 
+            // boxCustomerID
+            // 
+            boxCustomerID.FormattingEnabled = true;
+            boxCustomerID.Location = new Point(174, 107);
+            boxCustomerID.Name = "boxCustomerID";
+            boxCustomerID.Size = new Size(220, 28);
+            boxCustomerID.TabIndex = 33;
             // 
             // panel1
             // 
@@ -150,35 +166,38 @@
             // 
             // butEliminarOrders
             // 
-            butEliminarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butEliminarOrders.BackColor = SystemColors.ButtonHighlight;
+            butEliminarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminarOrders.Location = new Point(119, 634);
             butEliminarOrders.Name = "butEliminarOrders";
             butEliminarOrders.Size = new Size(148, 45);
             butEliminarOrders.TabIndex = 31;
             butEliminarOrders.Text = "Eliminar";
-            butEliminarOrders.UseVisualStyleBackColor = true;
+            butEliminarOrders.UseVisualStyleBackColor = false;
             butEliminarOrders.Click += butEliminarOrders_Click;
             // 
             // butNuevoOrders
             // 
-            butNuevoOrders.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butNuevoOrders.BackColor = SystemColors.ButtonHighlight;
+            butNuevoOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevoOrders.Location = new Point(229, 583);
             butNuevoOrders.Name = "butNuevoOrders";
             butNuevoOrders.Size = new Size(148, 45);
             butNuevoOrders.TabIndex = 30;
             butNuevoOrders.Text = "Nuevo Registro";
-            butNuevoOrders.UseVisualStyleBackColor = true;
+            butNuevoOrders.UseVisualStyleBackColor = false;
             butNuevoOrders.Click += butNuevoOrders_Click;
             // 
             // butGuardarOrders
             // 
-            butGuardarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butGuardarOrders.BackColor = SystemColors.ButtonHighlight;
+            butGuardarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butGuardarOrders.Location = new Point(22, 583);
             butGuardarOrders.Name = "butGuardarOrders";
             butGuardarOrders.Size = new Size(148, 45);
             butGuardarOrders.TabIndex = 29;
             butGuardarOrders.Text = "Guardar/Modificar";
-            butGuardarOrders.UseVisualStyleBackColor = true;
+            butGuardarOrders.UseVisualStyleBackColor = false;
             butGuardarOrders.Click += butGuardarOrders_Click;
             // 
             // txtShipCountry
@@ -382,14 +401,6 @@
             label5.TabIndex = 7;
             label5.Text = "OrderDate:";
             // 
-            // txtEmployeeID
-            // 
-            txtEmployeeID.BackColor = SystemColors.Menu;
-            txtEmployeeID.Location = new Point(176, 145);
-            txtEmployeeID.Name = "txtEmployeeID";
-            txtEmployeeID.Size = new Size(218, 27);
-            txtEmployeeID.TabIndex = 6;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -399,14 +410,6 @@
             label4.Size = new Size(119, 25);
             label4.TabIndex = 5;
             label4.Text = "EmployeeID:";
-            // 
-            // txtCustomerID
-            // 
-            txtCustomerID.BackColor = SystemColors.Menu;
-            txtCustomerID.Location = new Point(176, 111);
-            txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(218, 27);
-            txtCustomerID.TabIndex = 4;
             // 
             // label3
             // 
@@ -444,22 +447,26 @@
             // 
             // butRefrescarOrders
             // 
+            butRefrescarOrders.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescarOrders.Location = new Point(902, 28);
             butRefrescarOrders.Name = "butRefrescarOrders";
             butRefrescarOrders.Size = new Size(108, 61);
             butRefrescarOrders.TabIndex = 39;
             butRefrescarOrders.Text = "Refrescar";
-            butRefrescarOrders.UseVisualStyleBackColor = true;
+            butRefrescarOrders.UseVisualStyleBackColor = false;
             butRefrescarOrders.Click += butRefrescarOrders_Click;
             // 
             // butBuscarOrders
             // 
+            butBuscarOrders.BackColor = SystemColors.ButtonHighlight;
+            butBuscarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscarOrders.Location = new Point(762, 28);
             butBuscarOrders.Name = "butBuscarOrders";
             butBuscarOrders.Size = new Size(108, 61);
             butBuscarOrders.TabIndex = 38;
             butBuscarOrders.Text = "Buscar";
-            butBuscarOrders.UseVisualStyleBackColor = true;
+            butBuscarOrders.UseVisualStyleBackColor = false;
             butBuscarOrders.Click += butBuscarOrders_Click;
             // 
             // boxBuscarOrders
@@ -596,9 +603,7 @@
         private Label label6;
         private DateTimePicker dtpOrderDate;
         private Label label5;
-        private TextBox txtEmployeeID;
         private Label label4;
-        private TextBox txtCustomerID;
         private Label label3;
         private TextBox txtOrderID;
         private Label label2;
@@ -615,5 +620,7 @@
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem cerrarToolStripMenuItem;
         private Panel panel1;
+        private ComboBox boxEmployeeID;
+        private ComboBox boxCustomerID;
     }
 }

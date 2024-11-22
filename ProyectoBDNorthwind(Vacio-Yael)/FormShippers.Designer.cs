@@ -75,12 +75,14 @@
             // 
             // butRefrescar
             // 
+            butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butRefrescar.Location = new Point(315, 187);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 61);
             butRefrescar.TabIndex = 39;
             butRefrescar.Text = "Refrescar";
-            butRefrescar.UseVisualStyleBackColor = true;
+            butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // label36
@@ -95,12 +97,14 @@
             // 
             // butBuscar
             // 
+            butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butBuscar.Location = new Point(70, 187);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 61);
             butBuscar.TabIndex = 38;
             butBuscar.Text = "Buscar";
-            butBuscar.UseVisualStyleBackColor = true;
+            butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // label35
@@ -213,12 +217,14 @@
             // 
             // butEliminar
             // 
+            butEliminar.BackColor = SystemColors.ButtonHighlight;
+            butEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butEliminar.Location = new Point(202, 391);
             butEliminar.Name = "butEliminar";
             butEliminar.Size = new Size(148, 61);
             butEliminar.TabIndex = 31;
             butEliminar.Text = "Eliminar";
-            butEliminar.UseVisualStyleBackColor = true;
+            butEliminar.UseVisualStyleBackColor = false;
             butEliminar.Click += butEliminar_Click;
             // 
             // txtCompanyName
@@ -232,12 +238,14 @@
             // 
             // butNuevo
             // 
+            butNuevo.BackColor = SystemColors.ButtonHighlight;
+            butNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butNuevo.Location = new Point(309, 324);
             butNuevo.Name = "butNuevo";
             butNuevo.Size = new Size(148, 61);
             butNuevo.TabIndex = 30;
             butNuevo.Text = "Nuevo Registro";
-            butNuevo.UseVisualStyleBackColor = true;
+            butNuevo.UseVisualStyleBackColor = false;
             butNuevo.Click += butNuevo_Click;
             // 
             // label32
@@ -252,12 +260,14 @@
             // 
             // butGuardar
             // 
+            butGuardar.BackColor = SystemColors.ButtonHighlight;
+            butGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butGuardar.Location = new Point(91, 324);
             butGuardar.Name = "butGuardar";
             butGuardar.Size = new Size(148, 61);
             butGuardar.TabIndex = 29;
             butGuardar.Text = "Guardar/Modificar";
-            butGuardar.UseVisualStyleBackColor = true;
+            butGuardar.UseVisualStyleBackColor = false;
             butGuardar.Click += butGuardar_Click;
             // 
             // label33

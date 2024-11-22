@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,12 +30,50 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void FormCustomerCustomerDemo_Load(object sender, EventArgs e)
         {
             refreshPantalla();
+
+            string query1 = "select CustomerID, CompanyName from Customers";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query1, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxCustomerID.DataSource = dtCategorias;
+                boxCustomerID.DisplayMember = "CompanyName"; // Columna que se muestra en el ComboBox
+                boxCustomerID.ValueMember = "CustomerID"; // Valor interno que representa al ítem seleccionado
+            }
+
+            string query2 = "select customertypeid, customerdesc from customerdemographics";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxCustomerTypeID.DataSource = dtCategorias;
+                boxCustomerTypeID.DisplayMember = "customerdesc"; // Columna que se muestra en el ComboBox
+                boxCustomerTypeID.ValueMember = "customertypeid"; // Valor interno que representa al ítem seleccionado
+            }
         }
 
         private void dataGridViewCCD_SelectionChanged(object sender, EventArgs e)
         {
-            txtCustomerID.Text = Convert.ToString(dataGridViewCCD.CurrentRow.Cells["CustomerID"].Value);
-            txtCTID.Text = Convert.ToString(dataGridViewCCD.CurrentRow.Cells["CustomerTypeID"].Value);
+            boxCustomerID.Text = Convert.ToString(dataGridViewCCD.CurrentRow.Cells["CustomerID"].Value);
+            boxCustomerTypeID.Text = Convert.ToString(dataGridViewCCD.CurrentRow.Cells["CustomerTypeID"].Value);
         }
 
         private void butGuardar_Click(object sender, EventArgs e)
@@ -43,8 +82,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             CustomerCustomerDemo customerCustomerDemo = new CustomerCustomerDemo();
 
             // Asignamos los valores de los campos del formulario al objeto
-            customerCustomerDemo.CustomerID = txtCustomerID.Text; // Suponemos que txtCustomerID es el campo para CustomerID
-            customerCustomerDemo.CustomerTypeID = txtCTID.Text; // Suponemos que txtCustomerTypeID es el campo para CustomerTypeID
+            customerCustomerDemo.CustomerID = Convert.ToString(boxCustomerID.SelectedValue); // Suponemos que txtCustomerID es el campo para CustomerID
+            customerCustomerDemo.CustomerTypeID = Convert.ToString(boxCustomerTypeID.SelectedValue);  // Suponemos que txtCustomerTypeID es el campo para CustomerTypeID
 
             // Si se seleccionó una fila en el DataGridView
             if (dataGridViewCCD.SelectedRows.Count == 1)
@@ -93,8 +132,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void butNuevo_Click(object sender, EventArgs e)
         {
             dataGridViewCCD.CurrentCell = null;
-            txtCustomerID.Text = "";
-            txtCTID.Clear();
+            boxCustomerID.Text = "";
+            boxCustomerTypeID.Text = "";
         }
 
         private void butEliminar_Click(object sender, EventArgs e)

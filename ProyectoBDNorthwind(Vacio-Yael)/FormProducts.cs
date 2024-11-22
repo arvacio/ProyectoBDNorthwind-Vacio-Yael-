@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,8 +28,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             Products products = new Products();
 
             products.ProductName = txtProductName.Text;
-            products.SupplierID = Convert.ToInt32(txtSupplierID.Text);
-            products.CategoryID = Convert.ToInt32(txtCategoryID.Text);
+            products.SupplierID = Convert.ToInt32(boxSupplierID.SelectedValue);
+            products.CategoryID = Convert.ToInt32(boxCategoryID.SelectedValue);
             products.QuantityPerUnit = txtQuantityPerUnit.Text;
             products.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
             products.UnitsInStock = Convert.ToInt16(txtUnitsInStock.Text);
@@ -82,14 +83,53 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             refreshPantallaProducts();
             txtProductID.Enabled = false;
+
+            string query1 = "select supplierid, companyname from suppliers";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query1, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxSupplierID.DataSource = dtCategorias;
+                boxSupplierID.DisplayMember = "companyname"; // Columna que se muestra en el ComboBox
+                boxSupplierID.ValueMember = "supplierid"; // Valor interno que representa al ítem seleccionado
+            }
+
+            string query2 = "select categoryid, categoryname from categories";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxCategoryID.DataSource = dtCategorias;
+                boxCategoryID.DisplayMember = "categoryname"; // Columna que se muestra en el ComboBox
+                boxCategoryID.ValueMember = "categoryid"; // Valor interno que representa al ítem seleccionado
+            }
+
         }
 
         private void dataGridViewProducts_SelectionChanged(object sender, EventArgs e)
         {
             txtProductID.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["ProductID"].Value);
             txtProductName.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["ProductName"].Value);
-            txtSupplierID.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["SupplierID"].Value);
-            txtCategoryID.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["CategoryID"].Value);
+            boxSupplierID.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["SupplierID"].Value);
+            boxCategoryID.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["CategoryID"].Value);
             txtQuantityPerUnit.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["QuantityPerUnit"].Value);
             txtUnitPrice.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["UnitPrice"].Value);
             txtUnitsInStock.Text = Convert.ToString(dataGridViewProducts.CurrentRow.Cells["UnitsInStock"].Value);
@@ -103,8 +143,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             dataGridViewProducts.CurrentCell = null;
             txtProductID.Clear();
             txtProductName.Clear();
-            txtSupplierID.Clear();
-            txtCategoryID.Clear();
+            boxSupplierID.Text = "";
+            boxCategoryID.Text = "";
             txtQuantityPerUnit.Clear();
             txtUnitPrice.Clear();
             txtUnitsInStock.Clear();

@@ -19,7 +19,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "ADMIN" &&  txtContraseña.Text == "0000")
+            if (txtUsuario.Text == "ADMIN" && txtContraseña.Text == "0000")
             {
                 this.Hide();
                 Form_Inicio_Admin form_Inicio_Admin = new Form_Inicio_Admin();
@@ -39,6 +39,11 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
             else
                 MessageBox.Show("Usuario y/o Contraseña Incorrectos");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

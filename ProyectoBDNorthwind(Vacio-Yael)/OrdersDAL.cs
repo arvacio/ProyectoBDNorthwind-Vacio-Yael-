@@ -48,48 +48,80 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
         }
 
-        // Codigo para mostrar toda la tabla de orders
         public static List<Orders> PresentarRegistro()
         {
             List<Orders> Lista = new List<Orders>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from orders";
-                SqlCommand comando = new SqlCommand(query, conexion);
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    Orders orders = new Orders();
+                    string query = @"
+                SELECT 
+                    o.OrderID,
+                    o.CustomerID,
+                    o.EmployeeID,
+                    o.OrderDate,
+                    o.RequiredDate,
+                    o.ShippedDate,
+                    o.ShipVia,
+                    o.Freight,
+                    o.ShipName,
+                    o.ShipAddress,
+                    o.ShipCity,
+                    o.ShipRegion,
+                    o.ShipPostalCode,
+                    o.ShipCountry,
+                    c.CompanyName,
+                    e.FirstName
+                FROM Orders o
+                INNER JOIN Customers c ON o.CustomerID = c.CustomerID
+                INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID";
 
-                    orders.OrderID = reader.GetInt32(0);
-                    orders.CustomerID = reader.GetString(1);
-                    orders.EmployeeID = reader.GetInt32(2);
+                    SqlCommand comando = new SqlCommand(query, conexion);
 
-                    DateTime? OrderDatep = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3);
-                    DateTime? RequiredDatep = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4);
-                    DateTime? ShippedDatep = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5);
-                    orders.OrderDate = OrderDatep.ToString();
-                    orders.RequiredDate = RequiredDatep.ToString();
-                    orders.ShippedDate = ShippedDatep.ToString();
+                    SqlDataReader reader = comando.ExecuteReader();
 
-                    orders.ShipVia = reader.GetInt32(6);
-                    orders.Freight = reader.GetDecimal(7);
-                    orders.ShipName = reader.GetString(8);
-                    orders.ShipAddress = reader.GetString(9);
-                    orders.ShipCity = reader.GetString(10);
-                    orders.ShipRegion = reader.IsDBNull(11) ? null : reader.GetString(11);
-                    orders.ShipPostalCode = reader.IsDBNull(12) ? null : reader.GetString(12);
-                    orders.ShipCountry = reader.GetString(13);
+                    while (reader.Read())
+                    {
+                        Orders orders = new Orders();
 
-                    Lista.Add(orders);
+                        orders.OrderID = reader.GetInt32(0);
+                        orders.CustomerID = reader.GetString(1);
+                        orders.EmployeeID = reader.GetInt32(2);
+
+                        DateTime? OrderDatep = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3);
+                        DateTime? RequiredDatep = reader.IsDBNull(4) ? (DateTime?)null : reader.GetDateTime(4);
+                        DateTime? ShippedDatep = reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5);
+                        orders.OrderDate = OrderDatep.ToString();
+                        orders.RequiredDate = RequiredDatep.ToString();
+                        orders.ShippedDate = ShippedDatep.ToString();
+
+                        orders.ShipVia = reader.GetInt32(6);
+                        orders.Freight = reader.GetDecimal(7);
+                        orders.ShipName = reader.GetString(8);
+                        orders.ShipAddress = reader.GetString(9);
+                        orders.ShipCity = reader.GetString(10);
+                        orders.ShipRegion = reader.IsDBNull(11) ? null : reader.GetString(11);
+                        orders.ShipPostalCode = reader.IsDBNull(12) ? null : reader.GetString(12);
+                        orders.ShipCountry = reader.GetString(13);
+                        orders.CompanyName = reader.IsDBNull(14) ? null : reader.GetString(14);
+                        orders.FirstName = reader.IsDBNull(15) ? null : reader.GetString(15);
+
+
+                        Lista.Add(orders);
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al obtener los registros: " + ex.Message);
+            }
+
+            return Lista;
         }
+
+
         // Codigo para modificar un Order
         public static int ModificarOrders(Orders orders)
         {

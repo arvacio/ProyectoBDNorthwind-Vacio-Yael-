@@ -137,13 +137,14 @@
             // 
             // butInsertarImagen
             // 
-            butInsertarImagen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butInsertarImagen.BackColor = SystemColors.ButtonHighlight;
+            butInsertarImagen.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butInsertarImagen.Location = new Point(29, 8);
             butInsertarImagen.Name = "butInsertarImagen";
             butInsertarImagen.Size = new Size(192, 32);
             butInsertarImagen.TabIndex = 48;
             butInsertarImagen.Text = "Insertar Imagen";
-            butInsertarImagen.UseVisualStyleBackColor = true;
+            butInsertarImagen.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -485,35 +486,38 @@
             // 
             // butEliminar
             // 
-            butEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butEliminar.BackColor = SystemColors.ButtonHighlight;
+            butEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminar.Location = new Point(29, 318);
             butEliminar.Name = "butEliminar";
             butEliminar.Size = new Size(192, 32);
             butEliminar.TabIndex = 86;
             butEliminar.Text = "Eliminar";
-            butEliminar.UseVisualStyleBackColor = true;
+            butEliminar.UseVisualStyleBackColor = false;
             butEliminar.Click += butEliminar_Click;
             // 
             // butNuevo
             // 
-            butNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butNuevo.BackColor = SystemColors.ButtonHighlight;
+            butNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevo.Location = new Point(29, 280);
             butNuevo.Name = "butNuevo";
             butNuevo.Size = new Size(192, 32);
             butNuevo.TabIndex = 85;
             butNuevo.Text = "Nuevo";
-            butNuevo.UseVisualStyleBackColor = true;
+            butNuevo.UseVisualStyleBackColor = false;
             butNuevo.Click += butNuevo_Click;
             // 
             // butAgregar
             // 
-            butAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butAgregar.BackColor = SystemColors.ButtonHighlight;
+            butAgregar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butAgregar.Location = new Point(29, 242);
             butAgregar.Name = "butAgregar";
             butAgregar.Size = new Size(192, 32);
             butAgregar.TabIndex = 84;
             butAgregar.Text = "Agregar / Modificar";
-            butAgregar.UseVisualStyleBackColor = true;
+            butAgregar.UseVisualStyleBackColor = false;
             butAgregar.Click += butAgregar_Click;
             // 
             // panel3
@@ -583,24 +587,26 @@
             // 
             // butRefrescar
             // 
-            butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescar.Location = new Point(29, 149);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(192, 32);
             butRefrescar.TabIndex = 91;
             butRefrescar.Text = "Refrescar";
-            butRefrescar.UseVisualStyleBackColor = true;
+            butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // butBuscar
             // 
-            butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscar.Location = new Point(29, 111);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(192, 32);
             butBuscar.TabIndex = 90;
             butBuscar.Text = "Buscar";
-            butBuscar.UseVisualStyleBackColor = true;
+            butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // txtBuscarEmployees

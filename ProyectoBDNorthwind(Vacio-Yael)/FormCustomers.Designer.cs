@@ -302,35 +302,38 @@
             // 
             // butEliminarCustomer
             // 
-            butEliminarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butEliminarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butEliminarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminarCustomer.Location = new Point(133, 643);
             butEliminarCustomer.Name = "butEliminarCustomer";
             butEliminarCustomer.Size = new Size(148, 45);
             butEliminarCustomer.TabIndex = 31;
             butEliminarCustomer.Text = "Eliminar";
-            butEliminarCustomer.UseVisualStyleBackColor = true;
+            butEliminarCustomer.UseVisualStyleBackColor = false;
             butEliminarCustomer.Click += butEliminarCustomer_Click;
             // 
             // butNuevoCustomer
             // 
-            butNuevoCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butNuevoCustomer.BackColor = SystemColors.ButtonHighlight;
+            butNuevoCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevoCustomer.Location = new Point(229, 577);
             butNuevoCustomer.Name = "butNuevoCustomer";
             butNuevoCustomer.Size = new Size(148, 45);
             butNuevoCustomer.TabIndex = 30;
             butNuevoCustomer.Text = "Nuevo Registro";
-            butNuevoCustomer.UseVisualStyleBackColor = true;
+            butNuevoCustomer.UseVisualStyleBackColor = false;
             butNuevoCustomer.Click += butNuevoCustomer_Click;
             // 
             // butGuardarCustomer
             // 
-            butGuardarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butGuardarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butGuardarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butGuardarCustomer.Location = new Point(33, 577);
             butGuardarCustomer.Name = "butGuardarCustomer";
             butGuardarCustomer.Size = new Size(148, 45);
             butGuardarCustomer.TabIndex = 29;
             butGuardarCustomer.Text = "Guardar/Modificar";
-            butGuardarCustomer.UseVisualStyleBackColor = true;
+            butGuardarCustomer.UseVisualStyleBackColor = false;
             butGuardarCustomer.Click += butGuardarCustomer_Click;
             // 
             // txtContactName
@@ -397,22 +400,26 @@
             // 
             // butRefrescarCustomer
             // 
+            butRefrescarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescarCustomer.Location = new Point(902, 28);
             butRefrescarCustomer.Name = "butRefrescarCustomer";
             butRefrescarCustomer.Size = new Size(108, 61);
             butRefrescarCustomer.TabIndex = 39;
             butRefrescarCustomer.Text = "Refrescar";
-            butRefrescarCustomer.UseVisualStyleBackColor = true;
+            butRefrescarCustomer.UseVisualStyleBackColor = false;
             butRefrescarCustomer.Click += butRefrescarCustomer_Click;
             // 
             // butBuscarCustomer
             // 
+            butBuscarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butBuscarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscarCustomer.Location = new Point(762, 28);
             butBuscarCustomer.Name = "butBuscarCustomer";
             butBuscarCustomer.Size = new Size(108, 61);
             butBuscarCustomer.TabIndex = 38;
             butBuscarCustomer.Text = "Buscar";
-            butBuscarCustomer.UseVisualStyleBackColor = true;
+            butBuscarCustomer.UseVisualStyleBackColor = false;
             butBuscarCustomer.Click += butBuscarCustomer_Click;
             // 
             // boxBuscarCustomers

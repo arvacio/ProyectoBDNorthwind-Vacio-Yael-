@@ -39,8 +39,9 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.BackColor = SystemColors.InactiveBorder;
             txtUsuario.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtUsuario.Location = new Point(32, 177);
+            txtUsuario.Location = new Point(176, 181);
             txtUsuario.Mask = "AAAAAAAAAA";
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(119, 43);
@@ -48,8 +49,9 @@
             // 
             // txtContraseña
             // 
+            txtContraseña.BackColor = SystemColors.InactiveBorder;
             txtContraseña.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtContraseña.Location = new Point(32, 309);
+            txtContraseña.Location = new Point(176, 314);
             txtContraseña.Mask = "AAAA";
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
@@ -59,8 +61,9 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.AliceBlue;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(32, 115);
+            label1.Location = new Point(160, 116);
             label1.Name = "label1";
             label1.Size = new Size(148, 38);
             label1.TabIndex = 2;
@@ -69,8 +72,9 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.AliceBlue;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(32, 255);
+            label2.Location = new Point(124, 261);
             label2.Name = "label2";
             label2.Size = new Size(212, 38);
             label2.TabIndex = 3;
@@ -78,28 +82,34 @@
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.ButtonHighlight;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(32, 399);
             button1.Name = "button1";
-            button1.Size = new Size(94, 68);
+            button1.Size = new Size(162, 68);
             button1.TabIndex = 4;
             button1.Text = "Iniciar Sesion";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(160, 399);
+            button2.BackColor = SystemColors.ButtonHighlight;
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(266, 399);
             button2.Name = "button2";
-            button2.Size = new Size(94, 68);
+            button2.Size = new Size(162, 68);
             button2.TabIndex = 5;
             button2.Text = "Salir";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = Color.AliceBlue;
             label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(32, 39);
+            label3.Location = new Point(46, 36);
             label3.Name = "label3";
             label3.Size = new Size(357, 54);
             label3.TabIndex = 6;
@@ -110,6 +120,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
+            BackgroundImage = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM;
             ClientSize = new Size(460, 504);
             Controls.Add(label3);
             Controls.Add(button2);

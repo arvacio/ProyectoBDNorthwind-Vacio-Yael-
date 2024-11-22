@@ -23,6 +23,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         public string? ShipRegion { get; set; }
         public string? ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
+        public string CompanyName { get; set; }
+        public string FirstName { get; set; }
 
         // Constructores de Orders
         public Orders() { }

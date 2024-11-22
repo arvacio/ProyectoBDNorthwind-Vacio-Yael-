@@ -36,10 +36,10 @@
             txtBuscar = new TextBox();
             boxBuscar = new ComboBox();
             panel3 = new Panel();
-            txtCTID = new TextBox();
+            boxCustomerTypeID = new ComboBox();
             label3 = new Label();
             panel1 = new Panel();
-            txtCustomerID = new TextBox();
+            boxCustomerID = new ComboBox();
             label2 = new Label();
             label4 = new Label();
             label1 = new Label();
@@ -74,12 +74,14 @@
             // 
             // butRefrescar
             // 
+            butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescar.Location = new Point(315, 167);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 50);
             butRefrescar.TabIndex = 39;
             butRefrescar.Text = "Refrescar";
-            butRefrescar.UseVisualStyleBackColor = true;
+            butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // label36
@@ -94,12 +96,14 @@
             // 
             // butBuscar
             // 
+            butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscar.Location = new Point(70, 167);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 50);
             butBuscar.TabIndex = 38;
             butBuscar.Text = "Buscar";
-            butBuscar.UseVisualStyleBackColor = true;
+            butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // label35
@@ -137,7 +141,7 @@
             // panel3
             // 
             panel3.BackColor = Color.LightSkyBlue;
-            panel3.Controls.Add(txtCTID);
+            panel3.Controls.Add(boxCustomerTypeID);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(label1);
@@ -150,14 +154,14 @@
             panel3.Size = new Size(514, 404);
             panel3.TabIndex = 70;
             // 
-            // txtCTID
+            // boxCustomerTypeID
             // 
-            txtCTID.BackColor = SystemColors.Menu;
-            txtCTID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtCTID.Location = new Point(286, 233);
-            txtCTID.Name = "txtCTID";
-            txtCTID.Size = new Size(176, 38);
-            txtCTID.TabIndex = 43;
+            boxCustomerTypeID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxCustomerTypeID.FormattingEnabled = true;
+            boxCustomerTypeID.Location = new Point(286, 231);
+            boxCustomerTypeID.Name = "boxCustomerTypeID";
+            boxCustomerTypeID.Size = new Size(176, 36);
+            boxCustomerTypeID.TabIndex = 46;
             // 
             // label3
             // 
@@ -172,7 +176,7 @@
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
-            panel1.Controls.Add(txtCustomerID);
+            panel1.Controls.Add(boxCustomerID);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label4);
             panel1.Location = new Point(32, 104);
@@ -180,14 +184,14 @@
             panel1.Size = new Size(449, 109);
             panel1.TabIndex = 41;
             // 
-            // txtCustomerID
+            // boxCustomerID
             // 
-            txtCustomerID.BackColor = SystemColors.Menu;
-            txtCustomerID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtCustomerID.Location = new Point(254, 56);
-            txtCustomerID.Name = "txtCustomerID";
-            txtCustomerID.Size = new Size(176, 38);
-            txtCustomerID.TabIndex = 45;
+            boxCustomerID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxCustomerID.FormattingEnabled = true;
+            boxCustomerID.Location = new Point(254, 58);
+            boxCustomerID.Name = "boxCustomerID";
+            boxCustomerID.Size = new Size(176, 36);
+            boxCustomerID.TabIndex = 45;
             // 
             // label2
             // 
@@ -221,32 +225,38 @@
             // 
             // butEliminar
             // 
+            butEliminar.BackColor = SystemColors.ButtonHighlight;
+            butEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminar.Location = new Point(194, 336);
             butEliminar.Name = "butEliminar";
             butEliminar.Size = new Size(148, 44);
             butEliminar.TabIndex = 31;
             butEliminar.Text = "Eliminar";
-            butEliminar.UseVisualStyleBackColor = true;
+            butEliminar.UseVisualStyleBackColor = false;
             butEliminar.Click += butEliminar_Click;
             // 
             // butNuevo
             // 
+            butNuevo.BackColor = SystemColors.ButtonHighlight;
+            butNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevo.Location = new Point(301, 286);
             butNuevo.Name = "butNuevo";
             butNuevo.Size = new Size(148, 44);
             butNuevo.TabIndex = 30;
             butNuevo.Text = "Nuevo Registro";
-            butNuevo.UseVisualStyleBackColor = true;
+            butNuevo.UseVisualStyleBackColor = false;
             butNuevo.Click += butNuevo_Click;
             // 
             // butGuardar
             // 
+            butGuardar.BackColor = SystemColors.ButtonHighlight;
+            butGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butGuardar.Location = new Point(70, 286);
             butGuardar.Name = "butGuardar";
             butGuardar.Size = new Size(148, 44);
             butGuardar.TabIndex = 29;
             butGuardar.Text = "Guardar/Modificar";
-            butGuardar.UseVisualStyleBackColor = true;
+            butGuardar.UseVisualStyleBackColor = false;
             butGuardar.Click += butGuardar_Click;
             // 
             // label33
@@ -333,7 +343,6 @@
         private Panel panel3;
         private Label label3;
         private Panel panel1;
-        private TextBox txtCTID;
         private Label label2;
         private Label label1;
         private Button butEliminar;
@@ -344,7 +353,8 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem cerrarToolStripMenuItem;
-        private TextBox txtCustomerID;
         private Label label4;
+        private ComboBox boxCustomerID;
+        private ComboBox boxCustomerTypeID;
     }
 }

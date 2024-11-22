@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -35,14 +36,52 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             refreshPantallaOrders();
             txtOrderID.Enabled = false;
+
+            string query1 = "select CustomerID, CompanyName from Customers";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query1, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxCustomerID.DataSource = dtCategorias;
+                boxCustomerID.DisplayMember = "CompanyName"; // Columna que se muestra en el ComboBox
+                boxCustomerID.ValueMember = "CustomerID"; // Valor interno que representa al ítem seleccionado
+            }
+
+            string query2 = "select EmployeeID, FirstName from Employees";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias2 = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias2);
+
+                // Asignar el DataTable al ComboBox
+                boxEmployeeID.DataSource = dtCategorias2;
+                boxEmployeeID.DisplayMember = "FirstName"; // Columna que se muestra en el ComboBox
+                boxEmployeeID.ValueMember = "EmployeeID"; // Valor interno que representa al ítem seleccionado
+            }
         }
 
         // Codigo de seleccion dentro del grid
         private void dataGridViewOrders_SelectionChanged(object sender, EventArgs e)
         {
             txtOrderID.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["OrderID"].Value);
-            txtCustomerID.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["CustomerID"].Value);
-            txtEmployeeID.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["EmployeeID"].Value);
+            boxCustomerID.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["CustomerID"].Value);
+            boxEmployeeID.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["EmployeeID"].Value);
             dtpOrderDate.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["OrderDate"].Value);
             dtpRequiredDate.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["RequiredDate"].Value);
             dtpShippedDate.Text = Convert.ToString(dataGridViewOrders.CurrentRow.Cells["ShippedDate"].Value);
@@ -61,8 +100,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             Orders orders = new Orders();
 
-            orders.CustomerID = txtCustomerID.Text;
-            orders.EmployeeID = Convert.ToInt32(txtEmployeeID.Text);
+            orders.CustomerID = Convert.ToString(boxCustomerID.SelectedValue);
+            orders.EmployeeID = Convert.ToInt32(boxEmployeeID.SelectedValue);
 
             DateTime sD = dtpOrderDate.Value;
             DateTime sD1 = dtpRequiredDate.Value;
@@ -120,8 +159,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             dataGridViewOrders.CurrentCell = null;
             txtOrderID.Clear();
-            txtCustomerID.Clear();
-            txtEmployeeID.Clear();
+            boxCustomerID.Text = "";
+            boxEmployeeID.Text = "";
             dtpOrderDate.Value = DateTime.Today;
             dtpRequiredDate.Value = DateTime.Today;
             dtpShippedDate.Value = DateTime.Today;

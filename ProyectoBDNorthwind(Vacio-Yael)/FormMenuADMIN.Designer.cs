@@ -53,7 +53,6 @@
             archivoToolStripMenuItem = new ToolStripMenuItem();
             cerrarSesionToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
-            acercaDeToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             tabPage3 = new TabPage();
             label16 = new Label();
@@ -84,7 +83,7 @@
             menuStrip1.BackColor = SystemColors.GradientInactiveCaption;
             menuStrip1.Font = new Font("Segoe UI Historic", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { tablasToolStripMenuItem, archivoToolStripMenuItem, acercaDeToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tablasToolStripMenuItem, archivoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1179, 36);
@@ -101,6 +100,7 @@
             // ordersMenuToolStripMenuItem
             // 
             ordersMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ordersToolStripMenuItem, orderDetailsToolStripMenuItem });
+            ordersMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_25_AM__7_;
             ordersMenuToolStripMenuItem.Name = "ordersMenuToolStripMenuItem";
             ordersMenuToolStripMenuItem.Size = new Size(261, 32);
             ordersMenuToolStripMenuItem.Text = "Orders Menu";
@@ -122,6 +122,7 @@
             // productsMenuToolStripMenuItem
             // 
             productsMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { productsToolStripMenuItem, categoriesToolStripMenuItem });
+            productsMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM__5_;
             productsMenuToolStripMenuItem.Name = "productsMenuToolStripMenuItem";
             productsMenuToolStripMenuItem.Size = new Size(261, 32);
             productsMenuToolStripMenuItem.Text = "Products Menu";
@@ -129,20 +130,21 @@
             // productsToolStripMenuItem
             // 
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            productsToolStripMenuItem.Size = new Size(201, 32);
+            productsToolStripMenuItem.Size = new Size(224, 32);
             productsToolStripMenuItem.Text = "Products";
             productsToolStripMenuItem.Click += productsToolStripMenuItem_Click_1;
             // 
             // categoriesToolStripMenuItem
             // 
             categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            categoriesToolStripMenuItem.Size = new Size(201, 32);
+            categoriesToolStripMenuItem.Size = new Size(224, 32);
             categoriesToolStripMenuItem.Text = "Categories";
             categoriesToolStripMenuItem.Click += categoriesToolStripMenuItem_Click_1;
             // 
             // employeesMenuToolStripMenuItem
             // 
             employeesMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { employeesToolStripMenuItem, employeeTerritoriesToolStripMenuItem });
+            employeesMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_25_AM__5_;
             employeesMenuToolStripMenuItem.Name = "employeesMenuToolStripMenuItem";
             employeesMenuToolStripMenuItem.Size = new Size(261, 32);
             employeesMenuToolStripMenuItem.Text = "Employees Menu";
@@ -164,6 +166,7 @@
             // shipmentMenuToolStripMenuItem
             // 
             shipmentMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { suppliersToolStripMenuItem, shippersToolStripMenuItem });
+            shipmentMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM__3_;
             shipmentMenuToolStripMenuItem.Name = "shipmentMenuToolStripMenuItem";
             shipmentMenuToolStripMenuItem.Size = new Size(261, 32);
             shipmentMenuToolStripMenuItem.Text = "Shipment Menu";
@@ -171,20 +174,21 @@
             // suppliersToolStripMenuItem
             // 
             suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            suppliersToolStripMenuItem.Size = new Size(188, 32);
+            suppliersToolStripMenuItem.Size = new Size(224, 32);
             suppliersToolStripMenuItem.Text = "Suppliers";
             suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click_1;
             // 
             // shippersToolStripMenuItem
             // 
             shippersToolStripMenuItem.Name = "shippersToolStripMenuItem";
-            shippersToolStripMenuItem.Size = new Size(188, 32);
+            shippersToolStripMenuItem.Size = new Size(224, 32);
             shippersToolStripMenuItem.Text = "Shippers";
             shippersToolStripMenuItem.Click += shippersToolStripMenuItem_Click_1;
             // 
             // localityMenuToolStripMenuItem
             // 
             localityMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { territoriesToolStripMenuItem, regionToolStripMenuItem });
+            localityMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM__4_;
             localityMenuToolStripMenuItem.Name = "localityMenuToolStripMenuItem";
             localityMenuToolStripMenuItem.Size = new Size(261, 32);
             localityMenuToolStripMenuItem.Text = "Locality Menu";
@@ -206,6 +210,7 @@
             // customersMenuToolStripMenuItem
             // 
             customersMenuToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customersToolStripMenuItem, customerDemographicsToolStripMenuItem, customerCustomerDemoToolStripMenuItem });
+            customersMenuToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_25_AM__2_;
             customersMenuToolStripMenuItem.Name = "customersMenuToolStripMenuItem";
             customersMenuToolStripMenuItem.Size = new Size(261, 32);
             customersMenuToolStripMenuItem.Text = "Customers Menu";
@@ -240,6 +245,7 @@
             // 
             // cerrarSesionToolStripMenuItem
             // 
+            cerrarSesionToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM__2_;
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
             cerrarSesionToolStripMenuItem.Size = new Size(226, 32);
             cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
@@ -247,16 +253,11 @@
             // 
             // salirToolStripMenuItem
             // 
+            salirToolStripMenuItem.Image = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM__1_;
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             salirToolStripMenuItem.Size = new Size(226, 32);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            acercaDeToolStripMenuItem.Size = new Size(122, 32);
-            acercaDeToolStripMenuItem.Text = "Acerca De";
             // 
             // label1
             // 
@@ -481,7 +482,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem tablasToolStripMenuItem;
         private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem acercaDeToolStripMenuItem;
         private ToolStripMenuItem cToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;

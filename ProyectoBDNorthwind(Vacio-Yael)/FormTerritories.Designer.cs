@@ -36,7 +36,7 @@
             txtBuscarTerritory = new TextBox();
             boxBuscarTerritory = new ComboBox();
             panel3 = new Panel();
-            txtRegionID = new TextBox();
+            boxRegionID = new ComboBox();
             label3 = new Label();
             panel1 = new Panel();
             label2 = new Label();
@@ -75,12 +75,14 @@
             // 
             // butRefrescar
             // 
+            butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butRefrescar.Location = new Point(315, 187);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 61);
             butRefrescar.TabIndex = 39;
             butRefrescar.Text = "Refrescar";
-            butRefrescar.UseVisualStyleBackColor = true;
+            butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // label36
@@ -95,12 +97,14 @@
             // 
             // butBuscar
             // 
+            butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butBuscar.Location = new Point(70, 187);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 61);
             butBuscar.TabIndex = 38;
             butBuscar.Text = "Buscar";
-            butBuscar.UseVisualStyleBackColor = true;
+            butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // label35
@@ -138,7 +142,7 @@
             // panel3
             // 
             panel3.BackColor = Color.LightSkyBlue;
-            panel3.Controls.Add(txtRegionID);
+            panel3.Controls.Add(boxRegionID);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(panel1);
             panel3.Controls.Add(butEliminar);
@@ -152,14 +156,14 @@
             panel3.Size = new Size(514, 458);
             panel3.TabIndex = 58;
             // 
-            // txtRegionID
+            // boxRegionID
             // 
-            txtRegionID.BackColor = SystemColors.Menu;
-            txtRegionID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtRegionID.Location = new Point(289, 257);
-            txtRegionID.Name = "txtRegionID";
-            txtRegionID.Size = new Size(200, 38);
-            txtRegionID.TabIndex = 43;
+            boxRegionID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxRegionID.FormattingEnabled = true;
+            boxRegionID.Location = new Point(289, 260);
+            boxRegionID.Name = "boxRegionID";
+            boxRegionID.Size = new Size(200, 36);
+            boxRegionID.TabIndex = 43;
             // 
             // label3
             // 
@@ -213,12 +217,14 @@
             // 
             // butEliminar
             // 
+            butEliminar.BackColor = SystemColors.ButtonHighlight;
+            butEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butEliminar.Location = new Point(202, 391);
             butEliminar.Name = "butEliminar";
             butEliminar.Size = new Size(148, 61);
             butEliminar.TabIndex = 31;
             butEliminar.Text = "Eliminar";
-            butEliminar.UseVisualStyleBackColor = true;
+            butEliminar.UseVisualStyleBackColor = false;
             butEliminar.Click += butEliminar_Click;
             // 
             // txtTerritoryDes
@@ -232,12 +238,14 @@
             // 
             // butNuevo
             // 
+            butNuevo.BackColor = SystemColors.ButtonHighlight;
+            butNuevo.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butNuevo.Location = new Point(309, 324);
             butNuevo.Name = "butNuevo";
             butNuevo.Size = new Size(148, 61);
             butNuevo.TabIndex = 30;
             butNuevo.Text = "Nuevo Registro";
-            butNuevo.UseVisualStyleBackColor = true;
+            butNuevo.UseVisualStyleBackColor = false;
             butNuevo.Click += butNuevo_Click;
             // 
             // label32
@@ -252,12 +260,14 @@
             // 
             // butGuardar
             // 
+            butGuardar.BackColor = SystemColors.ButtonHighlight;
+            butGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butGuardar.Location = new Point(91, 324);
             butGuardar.Name = "butGuardar";
             butGuardar.Size = new Size(148, 61);
             butGuardar.TabIndex = 29;
             butGuardar.Text = "Guardar/Modificar";
-            butGuardar.UseVisualStyleBackColor = true;
+            butGuardar.UseVisualStyleBackColor = false;
             butGuardar.Click += butGuardar_Click;
             // 
             // label33
@@ -356,7 +366,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem cerrarToolStripMenuItem;
-        private TextBox txtRegionID;
         private Label label3;
+        private ComboBox boxRegionID;
     }
 }

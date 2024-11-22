@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,10 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             panel3 = new Panel();
             panel1 = new Panel();
+            boxOrderID = new ComboBox();
+            boxProductID = new ComboBox();
             label2 = new Label();
             label1 = new Label();
-            txtProductID = new TextBox();
-            txtOrderID = new TextBox();
             label32 = new Label();
             txtDiscount = new TextBox();
             label19 = new Label();
@@ -76,15 +77,33 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // panel1
             // 
             panel1.BackColor = Color.SteelBlue;
+            panel1.Controls.Add(boxOrderID);
+            panel1.Controls.Add(boxProductID);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtProductID);
-            panel1.Controls.Add(txtOrderID);
             panel1.Controls.Add(label32);
             panel1.Location = new Point(37, 90);
             panel1.Name = "panel1";
             panel1.Size = new Size(362, 169);
             panel1.TabIndex = 41;
+            // 
+            // boxOrderID
+            // 
+            boxOrderID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boxOrderID.FormattingEnabled = true;
+            boxOrderID.Location = new Point(210, 56);
+            boxOrderID.Name = "boxOrderID";
+            boxOrderID.Size = new Size(112, 36);
+            boxOrderID.TabIndex = 42;
+            // 
+            // boxProductID
+            // 
+            boxProductID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            boxProductID.FormattingEnabled = true;
+            boxProductID.Location = new Point(210, 111);
+            boxProductID.Name = "boxProductID";
+            boxProductID.Size = new Size(112, 36);
+            boxProductID.TabIndex = 41;
             // 
             // label2
             // 
@@ -105,24 +124,6 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             label1.Size = new Size(129, 31);
             label1.TabIndex = 39;
             label1.Text = "ProductID:";
-            // 
-            // txtProductID
-            // 
-            txtProductID.BackColor = SystemColors.Menu;
-            txtProductID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtProductID.Location = new Point(211, 111);
-            txtProductID.Name = "txtProductID";
-            txtProductID.Size = new Size(84, 38);
-            txtProductID.TabIndex = 38;
-            // 
-            // txtOrderID
-            // 
-            txtOrderID.BackColor = SystemColors.Menu;
-            txtOrderID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtOrderID.Location = new Point(211, 54);
-            txtOrderID.Name = "txtOrderID";
-            txtOrderID.Size = new Size(84, 38);
-            txtOrderID.TabIndex = 2;
             // 
             // label32
             // 
@@ -155,32 +156,38 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // butEliminarOrderDetails
             // 
+            butEliminarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butEliminarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminarOrderDetails.Location = new Point(135, 633);
             butEliminarOrderDetails.Name = "butEliminarOrderDetails";
             butEliminarOrderDetails.Size = new Size(148, 61);
             butEliminarOrderDetails.TabIndex = 31;
             butEliminarOrderDetails.Text = "Eliminar";
-            butEliminarOrderDetails.UseVisualStyleBackColor = true;
+            butEliminarOrderDetails.UseVisualStyleBackColor = false;
             butEliminarOrderDetails.Click += butEliminarOrderDetails_Click;
             // 
             // butNuevoOrderDetails
             // 
+            butNuevoOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butNuevoOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevoOrderDetails.Location = new Point(247, 556);
             butNuevoOrderDetails.Name = "butNuevoOrderDetails";
             butNuevoOrderDetails.Size = new Size(148, 61);
             butNuevoOrderDetails.TabIndex = 30;
             butNuevoOrderDetails.Text = "Nuevo Registro";
-            butNuevoOrderDetails.UseVisualStyleBackColor = true;
+            butNuevoOrderDetails.UseVisualStyleBackColor = false;
             butNuevoOrderDetails.Click += butNuevoOrderDetails_Click;
             // 
             // butGuardarOrderDetails
             // 
+            butGuardarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butGuardarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butGuardarOrderDetails.Location = new Point(40, 556);
             butGuardarOrderDetails.Name = "butGuardarOrderDetails";
             butGuardarOrderDetails.Size = new Size(148, 61);
             butGuardarOrderDetails.TabIndex = 29;
             butGuardarOrderDetails.Text = "Guardar/Modificar";
-            butGuardarOrderDetails.UseVisualStyleBackColor = true;
+            butGuardarOrderDetails.UseVisualStyleBackColor = false;
             butGuardarOrderDetails.Click += butGuardarOrderDetails_Click;
             // 
             // txtQuantity
@@ -247,22 +254,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // butRefrescarOrderDetails
             // 
-            butRefrescarOrderDetails.Location = new Point(760, 28);
+            butRefrescarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            butRefrescarOrderDetails.Location = new Point(768, 30);
             butRefrescarOrderDetails.Name = "butRefrescarOrderDetails";
-            butRefrescarOrderDetails.Size = new Size(78, 61);
+            butRefrescarOrderDetails.Size = new Size(92, 61);
             butRefrescarOrderDetails.TabIndex = 39;
             butRefrescarOrderDetails.Text = "Refrescar";
-            butRefrescarOrderDetails.UseVisualStyleBackColor = true;
+            butRefrescarOrderDetails.UseVisualStyleBackColor = false;
             butRefrescarOrderDetails.Click += butRefrescarOrderDetails_Click;
             // 
             // butBuscarOrderDetails
             // 
-            butBuscarOrderDetails.Location = new Point(657, 28);
+            butBuscarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butBuscarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            butBuscarOrderDetails.Location = new Point(670, 30);
             butBuscarOrderDetails.Name = "butBuscarOrderDetails";
-            butBuscarOrderDetails.Size = new Size(78, 61);
+            butBuscarOrderDetails.Size = new Size(92, 61);
             butBuscarOrderDetails.TabIndex = 38;
             butBuscarOrderDetails.Text = "Buscar";
-            butBuscarOrderDetails.UseVisualStyleBackColor = true;
+            butBuscarOrderDetails.UseVisualStyleBackColor = false;
             butBuscarOrderDetails.Click += butBuscarOrderDetails_Click;
             // 
             // boxBuscarOrderDetails
@@ -377,7 +388,6 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private Label label30;
         private TextBox txtUnitPrice;
         private Label label31;
-        private TextBox txtOrderID;
         private Label label32;
         private Label label33;
         private Panel panel4;
@@ -392,8 +402,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private ToolStripMenuItem archivoToolStripMenuItem;
         private Label label2;
         private Label label1;
-        private TextBox txtProductID;
         private Panel panel1;
+        private ComboBox boxProductID;
+        private ComboBox boxOrderID;
         private ToolStripMenuItem cerrarToolStripMenuItem;
 
         private void cerrarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -409,12 +420,50 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void FormOrderDetails_Load(object sender, EventArgs e)
         {
             refreshPantallaOrderDetails();
+
+            string query1 = "select productid, productname from products";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query1, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias);
+
+                // Asignar el DataTable al ComboBox
+                boxProductID.DataSource = dtCategorias;
+                boxProductID.DisplayMember = "productname"; // Columna que se muestra en el ComboBox
+                boxProductID.ValueMember = "productid"; // Valor interno que representa al ítem seleccionado
+            }
+
+            string query2 = "select orderid from orders";
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Crear un adaptador de datos para llenar el DataTable
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, conexion);
+
+                // Crear un DataTable para almacenar los resultados
+                DataTable dtCategorias2 = new DataTable();
+
+                // Llenar el DataTable con los resultados de la consulta
+                adapter.Fill(dtCategorias2);
+
+                // Asignar el DataTable al ComboBox
+                boxOrderID.DataSource = dtCategorias2;
+                boxOrderID.DisplayMember = "orderid"; // Columna que se muestra en el ComboBox
+                boxOrderID.ValueMember = "orderid"; // Valor interno que representa al ítem seleccionado
+            }
         }
 
         private void dataGridViewOrderDetails_SelectionChanged(object sender, EventArgs e)
         {
-            txtOrderID.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["OrderID"].Value);
-            txtProductID.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["ProductID"].Value);
+            boxOrderID.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["OrderID"].Value);
+            boxProductID.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["ProductID"].Value);
             txtUnitPrice.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["UnitPrice"].Value);
             txtQuantity.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["Quantity"].Value);
             txtDiscount.Text = Convert.ToString(dataGridViewOrderDetails.CurrentRow.Cells["Discount"].Value);
@@ -424,8 +473,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             OrderDetails orderDetails = new OrderDetails();
 
-            orderDetails.OrderID = Convert.ToInt32(txtOrderID.Text);
-            orderDetails.ProductID = Convert.ToInt32(txtProductID.Text);
+            orderDetails.OrderID = Convert.ToInt32(boxOrderID.SelectedValue);
+            orderDetails.ProductID = Convert.ToInt32(boxProductID.SelectedValue);
             orderDetails.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
             orderDetails.Quantity = Convert.ToInt32(txtQuantity.Text);
             orderDetails.Discount = float.Parse(txtQuantity.Text);
@@ -468,8 +517,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void butNuevoOrderDetails_Click(object sender, EventArgs e)
         {
             dataGridViewOrderDetails.CurrentCell = null;
-            txtOrderID.Clear();
-            txtProductID.Clear();
+            boxOrderID.Text = "";
+            boxProductID.Text = "";
             txtUnitPrice.Clear();
             txtQuantity.Clear();
             txtDiscount.Clear();

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel3 = new Panel();
+            boxCategoryID = new ComboBox();
+            boxSupplierID = new ComboBox();
             BoxDiscontinued = new ComboBox();
             label25 = new Label();
             txtReorderLevel = new TextBox();
@@ -41,12 +43,10 @@
             label22 = new Label();
             txtQuantityPerUnit = new TextBox();
             label20 = new Label();
-            txtCategoryID = new TextBox();
             label19 = new Label();
             butEliminarProducts = new Button();
             butNuevoProducts = new Button();
             butGuardarProducts = new Button();
-            txtSupplierID = new TextBox();
             label30 = new Label();
             txtProductName = new TextBox();
             label31 = new Label();
@@ -73,6 +73,8 @@
             // panel3
             // 
             panel3.BackColor = Color.LightSkyBlue;
+            panel3.Controls.Add(boxCategoryID);
+            panel3.Controls.Add(boxSupplierID);
             panel3.Controls.Add(BoxDiscontinued);
             panel3.Controls.Add(label25);
             panel3.Controls.Add(txtReorderLevel);
@@ -85,12 +87,10 @@
             panel3.Controls.Add(label22);
             panel3.Controls.Add(txtQuantityPerUnit);
             panel3.Controls.Add(label20);
-            panel3.Controls.Add(txtCategoryID);
             panel3.Controls.Add(label19);
             panel3.Controls.Add(butEliminarProducts);
             panel3.Controls.Add(butNuevoProducts);
             panel3.Controls.Add(butGuardarProducts);
-            panel3.Controls.Add(txtSupplierID);
             panel3.Controls.Add(label30);
             panel3.Controls.Add(txtProductName);
             panel3.Controls.Add(label31);
@@ -101,6 +101,24 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(414, 709);
             panel3.TabIndex = 47;
+            // 
+            // boxCategoryID
+            // 
+            boxCategoryID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxCategoryID.FormattingEnabled = true;
+            boxCategoryID.Location = new Point(193, 227);
+            boxCategoryID.Name = "boxCategoryID";
+            boxCategoryID.Size = new Size(203, 39);
+            boxCategoryID.TabIndex = 48;
+            // 
+            // boxSupplierID
+            // 
+            boxSupplierID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            boxSupplierID.FormattingEnabled = true;
+            boxSupplierID.Location = new Point(193, 182);
+            boxSupplierID.Name = "boxSupplierID";
+            boxSupplierID.Size = new Size(203, 39);
+            boxSupplierID.TabIndex = 47;
             // 
             // BoxDiscontinued
             // 
@@ -218,15 +236,6 @@
             label20.TabIndex = 34;
             label20.Text = "QuantityPerUnit:";
             // 
-            // txtCategoryID
-            // 
-            txtCategoryID.BackColor = SystemColors.Menu;
-            txtCategoryID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCategoryID.Location = new Point(193, 226);
-            txtCategoryID.Name = "txtCategoryID";
-            txtCategoryID.Size = new Size(203, 38);
-            txtCategoryID.TabIndex = 33;
-            // 
             // label19
             // 
             label19.AutoSize = true;
@@ -239,42 +248,39 @@
             // 
             // butEliminarProducts
             // 
+            butEliminarProducts.BackColor = SystemColors.ButtonHighlight;
+            butEliminarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butEliminarProducts.Location = new Point(117, 639);
             butEliminarProducts.Name = "butEliminarProducts";
             butEliminarProducts.Size = new Size(148, 61);
             butEliminarProducts.TabIndex = 31;
             butEliminarProducts.Text = "Eliminar";
-            butEliminarProducts.UseVisualStyleBackColor = true;
+            butEliminarProducts.UseVisualStyleBackColor = false;
             butEliminarProducts.Click += butEliminarProducts_Click;
             // 
             // butNuevoProducts
             // 
+            butNuevoProducts.BackColor = SystemColors.ButtonHighlight;
+            butNuevoProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butNuevoProducts.Location = new Point(229, 562);
             butNuevoProducts.Name = "butNuevoProducts";
             butNuevoProducts.Size = new Size(148, 61);
             butNuevoProducts.TabIndex = 30;
             butNuevoProducts.Text = "Nuevo Registro";
-            butNuevoProducts.UseVisualStyleBackColor = true;
+            butNuevoProducts.UseVisualStyleBackColor = false;
             butNuevoProducts.Click += butNuevoProducts_Click;
             // 
             // butGuardarProducts
             // 
+            butGuardarProducts.BackColor = SystemColors.ButtonHighlight;
+            butGuardarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butGuardarProducts.Location = new Point(22, 562);
             butGuardarProducts.Name = "butGuardarProducts";
             butGuardarProducts.Size = new Size(148, 61);
             butGuardarProducts.TabIndex = 29;
             butGuardarProducts.Text = "Guardar/Modificar";
-            butGuardarProducts.UseVisualStyleBackColor = true;
+            butGuardarProducts.UseVisualStyleBackColor = false;
             butGuardarProducts.Click += butGuardarProducts_Click;
-            // 
-            // txtSupplierID
-            // 
-            txtSupplierID.BackColor = SystemColors.Menu;
-            txtSupplierID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtSupplierID.Location = new Point(193, 182);
-            txtSupplierID.Name = "txtSupplierID";
-            txtSupplierID.Size = new Size(203, 38);
-            txtSupplierID.TabIndex = 6;
             // 
             // label30
             // 
@@ -350,22 +356,26 @@
             // 
             // butRefrescarProducts
             // 
-            butRefrescarProducts.Location = new Point(762, 28);
+            butRefrescarProducts.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            butRefrescarProducts.Location = new Point(881, 28);
             butRefrescarProducts.Name = "butRefrescarProducts";
-            butRefrescarProducts.Size = new Size(78, 61);
+            butRefrescarProducts.Size = new Size(117, 61);
             butRefrescarProducts.TabIndex = 39;
             butRefrescarProducts.Text = "Refrescar";
-            butRefrescarProducts.UseVisualStyleBackColor = true;
+            butRefrescarProducts.UseVisualStyleBackColor = false;
             butRefrescarProducts.Click += butRefrescarProducts_Click;
             // 
             // butBuscarProducts
             // 
-            butBuscarProducts.Location = new Point(657, 28);
+            butBuscarProducts.BackColor = SystemColors.ButtonHighlight;
+            butBuscarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            butBuscarProducts.Location = new Point(718, 28);
             butBuscarProducts.Name = "butBuscarProducts";
-            butBuscarProducts.Size = new Size(78, 61);
+            butBuscarProducts.Size = new Size(117, 61);
             butBuscarProducts.TabIndex = 38;
             butBuscarProducts.Text = "Buscar";
-            butBuscarProducts.UseVisualStyleBackColor = true;
+            butBuscarProducts.UseVisualStyleBackColor = false;
             butBuscarProducts.Click += butBuscarProducts_Click;
             // 
             // boxBuscarProducts
@@ -486,12 +496,10 @@
         private Label label22;
         private TextBox txtQuantityPerUnit;
         private Label label20;
-        private TextBox txtCategoryID;
         private Label label19;
         private Button butEliminarProducts;
         private Button butNuevoProducts;
         private Button butGuardarProducts;
-        private TextBox txtSupplierID;
         private Label label30;
         private TextBox txtProductName;
         private Label label31;
@@ -510,5 +518,7 @@
         private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem cerrarToolStripMenuItem;
         private ComboBox BoxDiscontinued;
+        private ComboBox boxCategoryID;
+        private ComboBox boxSupplierID;
     }
 }

@@ -104,12 +104,14 @@
             // 
             // butRefrescar
             // 
+            butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butRefrescar.Location = new Point(425, 134);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(225, 51);
             butRefrescar.TabIndex = 39;
             butRefrescar.Text = "Refrescar";
-            butRefrescar.UseVisualStyleBackColor = true;
+            butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // label36
@@ -124,12 +126,14 @@
             // 
             // butBuscar
             // 
+            butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butBuscar.Location = new Point(40, 134);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(225, 51);
             butBuscar.TabIndex = 38;
             butBuscar.Text = "Buscar";
-            butBuscar.UseVisualStyleBackColor = true;
+            butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // label35
@@ -185,13 +189,14 @@
             // 
             // butInsertarImagen
             // 
-            butInsertarImagen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            butInsertarImagen.BackColor = SystemColors.ButtonHighlight;
+            butInsertarImagen.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butInsertarImagen.Location = new Point(154, 372);
             butInsertarImagen.Name = "butInsertarImagen";
             butInsertarImagen.Size = new Size(125, 32);
             butInsertarImagen.TabIndex = 50;
             butInsertarImagen.Text = "Insertar Imagen";
-            butInsertarImagen.UseVisualStyleBackColor = true;
+            butInsertarImagen.UseVisualStyleBackColor = false;
             // 
             // picCategoryPicture
             // 
@@ -282,32 +287,38 @@
             // 
             // butEliminar
             // 
+            butEliminar.BackColor = SystemColors.ButtonHighlight;
+            butEliminar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butEliminar.Location = new Point(143, 632);
             butEliminar.Name = "butEliminar";
             butEliminar.Size = new Size(148, 61);
             butEliminar.TabIndex = 31;
             butEliminar.Text = "Eliminar";
-            butEliminar.UseVisualStyleBackColor = true;
+            butEliminar.UseVisualStyleBackColor = false;
             butEliminar.Click += butEliminar_Click;
             // 
             // butNuevo
             // 
+            butNuevo.BackColor = SystemColors.ButtonHighlight;
+            butNuevo.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butNuevo.Location = new Point(251, 565);
             butNuevo.Name = "butNuevo";
             butNuevo.Size = new Size(148, 61);
             butNuevo.TabIndex = 30;
             butNuevo.Text = "Nuevo Registro";
-            butNuevo.UseVisualStyleBackColor = true;
+            butNuevo.UseVisualStyleBackColor = false;
             butNuevo.Click += butNuevo_Click;
             // 
             // butGuardar
             // 
+            butGuardar.BackColor = SystemColors.ButtonHighlight;
+            butGuardar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
             butGuardar.Location = new Point(44, 565);
             butGuardar.Name = "butGuardar";
             butGuardar.Size = new Size(148, 61);
             butGuardar.TabIndex = 29;
             butGuardar.Text = "Guardar/Modificar";
-            butGuardar.UseVisualStyleBackColor = true;
+            butGuardar.UseVisualStyleBackColor = false;
             butGuardar.Click += butGuardar_Click;
             // 
             // label33
