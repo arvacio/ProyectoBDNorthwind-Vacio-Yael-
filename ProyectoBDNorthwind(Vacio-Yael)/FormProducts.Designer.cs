@@ -104,6 +104,7 @@
             // 
             // boxCategoryID
             // 
+            boxCategoryID.BackColor = SystemColors.Menu;
             boxCategoryID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxCategoryID.FormattingEnabled = true;
             boxCategoryID.Location = new Point(193, 227);
@@ -113,6 +114,7 @@
             // 
             // boxSupplierID
             // 
+            boxSupplierID.BackColor = SystemColors.Menu;
             boxSupplierID.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxSupplierID.FormattingEnabled = true;
             boxSupplierID.Location = new Point(193, 182);
@@ -313,7 +315,7 @@
             // 
             // txtProductID
             // 
-            txtProductID.BackColor = SystemColors.ActiveBorder;
+            txtProductID.BackColor = SystemColors.Menu;
             txtProductID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtProductID.Location = new Point(293, 85);
             txtProductID.Name = "txtProductID";
@@ -358,11 +360,11 @@
             // 
             butRefrescarProducts.BackColor = SystemColors.ButtonHighlight;
             butRefrescarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butRefrescarProducts.Location = new Point(881, 28);
+            butRefrescarProducts.Image = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescarProducts.Location = new Point(845, 28);
             butRefrescarProducts.Name = "butRefrescarProducts";
-            butRefrescarProducts.Size = new Size(117, 61);
+            butRefrescarProducts.Size = new Size(138, 61);
             butRefrescarProducts.TabIndex = 39;
-            butRefrescarProducts.Text = "Refrescar";
             butRefrescarProducts.UseVisualStyleBackColor = false;
             butRefrescarProducts.Click += butRefrescarProducts_Click;
             // 
@@ -370,11 +372,11 @@
             // 
             butBuscarProducts.BackColor = SystemColors.ButtonHighlight;
             butBuscarProducts.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butBuscarProducts.Location = new Point(718, 28);
+            butBuscarProducts.Image = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butBuscarProducts.Location = new Point(684, 28);
             butBuscarProducts.Name = "butBuscarProducts";
-            butBuscarProducts.Size = new Size(117, 61);
+            butBuscarProducts.Size = new Size(138, 61);
             butBuscarProducts.TabIndex = 38;
-            butBuscarProducts.Text = "Buscar";
             butBuscarProducts.UseVisualStyleBackColor = false;
             butBuscarProducts.Click += butBuscarProducts_Click;
             // 
@@ -383,7 +385,7 @@
             boxBuscarProducts.BackColor = SystemColors.Menu;
             boxBuscarProducts.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscarProducts.FormattingEnabled = true;
-            boxBuscarProducts.Items.AddRange(new object[] { "ProductID", "ProductName", "SupplierID", "CategoryID", "QuantityPerUnit", "UnitPrice", "UnitsInStock", "UnitsOnOrder", "ReorderLevel", "Discontinued", "No Discontinued" });
+            boxBuscarProducts.Items.AddRange(new object[] { "ProductID", "ProductName", "SupplierID", "CompanyName", "CategoryID", "CategoryName", "QuantityPerUnit", "UnitPrice", "UnitsInStock", "UnitsOnOrder", "ReorderLevel", "Discontinued", "No Discontinued" });
             boxBuscarProducts.Location = new Point(148, 57);
             boxBuscarProducts.Name = "boxBuscarProducts";
             boxBuscarProducts.Size = new Size(232, 36);

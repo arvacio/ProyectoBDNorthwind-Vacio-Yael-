@@ -41,26 +41,57 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             List<EmployeeTerritories> lista = new List<EmployeeTerritories>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "SELECT * FROM EmployeeTerritories";
-                SqlCommand comando = new SqlCommand(query, conexion);
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+                    // Consulta con JOIN para obtener EmployeeID, TerritoryID, FirstName y TerritoryDescription
+                    string query = @"
+                SELECT et.EmployeeID, et.TerritoryID, e.FirstName, t.TerritoryDescription
+                FROM EmployeeTerritories et
+                INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
+                INNER JOIN Territories t ON et.TerritoryID = t.TerritoryID";
 
-                    employeeTerritories.EmployeeID = reader.GetInt32(0);  
-                    employeeTerritories.TerritoryID = reader.GetString(1);  
+                    SqlCommand comando = new SqlCommand(query, conexion);
 
-                    lista.Add(employeeTerritories);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+
+                            // Asignamos EmployeeID
+                            employeeTerritories.EmployeeID = reader.GetInt32(0);
+
+                            // Asignamos TerritoryID
+                            employeeTerritories.TerritoryID = reader.GetString(1);
+
+                            // Asignamos FirstName
+                            if (!reader.IsDBNull(2)) // Verificamos si FirstName no es nulo
+                            {
+                                employeeTerritories.FirstName = reader.GetString(2);
+                            }
+
+                            // Asignamos TerritoryDescription
+                            if (!reader.IsDBNull(3)) // Verificamos si TerritoryDescription no es nulo
+                            {
+                                employeeTerritories.TerritoryDescription = reader.GetString(3);
+                            }
+
+                            lista.Add(employeeTerritories);
+                        }
+                    }
                 }
-                conexion.Close();
-                return lista;
             }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                throw new ApplicationException("Error al obtener los datos de EmployeeTerritories.", ex);
+            }
+
+            return lista;
         }
+
 
         public static int ModificarEmployeeTerritories(EmployeeTerritories employeeTerritories)
         {
@@ -123,55 +154,230 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             List<EmployeeTerritories> Lista = new List<EmployeeTerritories>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from EmployeeTerritories where EmployeeID =" + EmployeeID + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+                    // Consulta SQL con JOIN para obtener EmployeeID, TerritoryID, FirstName y TerritoryDescription
+                    string query = @"
+                SELECT et.EmployeeID, et.TerritoryID, e.FirstName, t.TerritoryDescription
+                FROM EmployeeTerritories et
+                INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
+                INNER JOIN Territories t ON et.TerritoryID = t.TerritoryID
+                WHERE et.EmployeeID = @EmployeeID";
 
-                    employeeTerritories.EmployeeID = reader.GetInt32(0);
-                    employeeTerritories.TerritoryID = reader.GetString(1);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@EmployeeID", EmployeeID); // Parámetro para evitar inyecciones SQL
 
-                    Lista.Add(employeeTerritories);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+
+                            // Asignar EmployeeID
+                            employeeTerritories.EmployeeID = reader.GetInt32(0);
+
+                            // Asignar TerritoryID
+                            employeeTerritories.TerritoryID = reader.GetString(1);
+
+                            // Asignar FirstName
+                            if (!reader.IsDBNull(2)) // Verificar si FirstName no es nulo
+                            {
+                                employeeTerritories.FirstName = reader.GetString(2);
+                            }
+
+                            // Asignar TerritoryDescription
+                            if (!reader.IsDBNull(3)) // Verificar si TerritoryDescription no es nulo
+                            {
+                                employeeTerritories.TerritoryDescription = reader.GetString(3);
+                            }
+
+                            Lista.Add(employeeTerritories);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                throw new ApplicationException("Error al obtener los datos de EmployeeTerritories.", ex);
+            }
+
+            return Lista;
         }
+
 
         public static List<EmployeeTerritories> BuscarRegistroTerritoryID(string TerritoryID)
         {
             List<EmployeeTerritories> Lista = new List<EmployeeTerritories>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from EmployeeTerritories where TerritoryID ='" + TerritoryID + "' ";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+                    // Consulta SQL con JOIN para obtener EmployeeID, TerritoryID, FirstName y TerritoryDescription
+                    string query = @"
+                SELECT et.EmployeeID, et.TerritoryID, e.FirstName, t.TerritoryDescription
+                FROM EmployeeTerritories et
+                INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
+                INNER JOIN Territories t ON et.TerritoryID = t.TerritoryID
+                WHERE et.TerritoryID = @TerritoryID";
 
-                    employeeTerritories.EmployeeID = reader.GetInt32(0);
-                    employeeTerritories.TerritoryID = reader.GetString(1);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@TerritoryID", TerritoryID); // Parámetro para evitar inyecciones SQL
 
-                    Lista.Add(employeeTerritories);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+
+                            // Asignamos EmployeeID
+                            employeeTerritories.EmployeeID = reader.GetInt32(0);
+
+                            // Asignamos TerritoryID
+                            employeeTerritories.TerritoryID = reader.GetString(1);
+
+                            // Asignamos FirstName
+                            if (!reader.IsDBNull(2)) // Verificar si FirstName no es nulo
+                            {
+                                employeeTerritories.FirstName = reader.GetString(2);
+                            }
+
+                            // Asignamos TerritoryDescription
+                            if (!reader.IsDBNull(3)) // Verificar si TerritoryDescription no es nulo
+                            {
+                                employeeTerritories.TerritoryDescription = reader.GetString(3);
+                            }
+
+                            Lista.Add(employeeTerritories);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                throw new ApplicationException("Error al obtener los datos de EmployeeTerritories.", ex);
+            }
+
+            return Lista;
         }
 
+        public static List<EmployeeTerritories> BuscarRegistroFirstName(string FirstName)
+        {
+            List<EmployeeTerritories> Lista = new List<EmployeeTerritories>();
 
+            try
+            {
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+                {
+                    // Consulta SQL con JOIN para obtener EmployeeID, TerritoryID, FirstName y TerritoryDescription
+                    string query = @"
+                SELECT et.EmployeeID, et.TerritoryID, e.FirstName, t.TerritoryDescription
+                FROM EmployeeTerritories et
+                INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
+                INNER JOIN Territories t ON et.TerritoryID = t.TerritoryID
+                WHERE e.FirstName = @FirstName";
 
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@FirstName", FirstName); // Parámetro para evitar inyecciones SQL
 
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EmployeeTerritories employeeTerritories = new EmployeeTerritories();
 
+                            // Asignar EmployeeID
+                            employeeTerritories.EmployeeID = reader.GetInt32(0);
 
+                            // Asignar TerritoryID
+                            employeeTerritories.TerritoryID = reader.GetString(1);
+
+                            // Asignar FirstName
+                            if (!reader.IsDBNull(2)) // Verificar si FirstName no es nulo
+                            {
+                                employeeTerritories.FirstName = reader.GetString(2);
+                            }
+
+                            // Asignar TerritoryDescription
+                            if (!reader.IsDBNull(3)) // Verificar si TerritoryDescription no es nulo
+                            {
+                                employeeTerritories.TerritoryDescription = reader.GetString(3);
+                            }
+
+                            Lista.Add(employeeTerritories);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                throw new ApplicationException("Error al obtener los datos de EmployeeTerritories.", ex);
+            }
+
+            return Lista;
+        }
+
+        public static List<EmployeeTerritories> BuscarRegistroTerritoryDescription(string TerritoryDescription)
+        {
+            List<EmployeeTerritories> Lista = new List<EmployeeTerritories>();
+
+            try
+            {
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+                {
+                    // Consulta SQL con JOIN para obtener EmployeeID, TerritoryID, FirstName y TerritoryDescription
+                    string query = @"
+                SELECT et.EmployeeID, et.TerritoryID, e.FirstName, t.TerritoryDescription
+                FROM EmployeeTerritories et
+                INNER JOIN Employees e ON et.EmployeeID = e.EmployeeID
+                INNER JOIN Territories t ON et.TerritoryID = t.TerritoryID
+                WHERE t.TerritoryDescription = @TerritoryDescription";
+
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@TerritoryDescription", TerritoryDescription); // Parámetro para evitar inyecciones SQL
+
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            EmployeeTerritories employeeTerritories = new EmployeeTerritories();
+
+                            // Asignar EmployeeID
+                            employeeTerritories.EmployeeID = reader.GetInt32(0);
+
+                            // Asignar TerritoryID
+                            employeeTerritories.TerritoryID = reader.GetString(1);
+
+                            // Asignar FirstName
+                            if (!reader.IsDBNull(2)) // Verificar si FirstName no es nulo
+                            {
+                                employeeTerritories.FirstName = reader.GetString(2);
+                            }
+
+                            // Asignar TerritoryDescription
+                            if (!reader.IsDBNull(3)) // Verificar si TerritoryDescription no es nulo
+                            {
+                                employeeTerritories.TerritoryDescription = reader.GetString(3);
+                            }
+
+                            Lista.Add(employeeTerritories);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones
+                throw new ApplicationException("Error al obtener los datos de EmployeeTerritories.", ex);
+            }
+
+            return Lista;
+        }
 
     }
 }

@@ -74,12 +74,13 @@
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butRefrescar.Location = new Point(315, 187);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 61);
             butRefrescar.TabIndex = 39;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
@@ -96,12 +97,13 @@
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             butBuscar.Location = new Point(70, 187);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 61);
             butBuscar.TabIndex = 38;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click_1;
             // 

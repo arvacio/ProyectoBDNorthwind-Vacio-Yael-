@@ -179,6 +179,10 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         int RegionID = Convert.ToInt32(txtBuscarTerritory.Text);
                         dataGridViewTerritories.DataSource = TerritoriesDAL.BuscarRegistroRegionID(RegionID);
                         break;
+                    case "RegionDescription":
+                        string RegionDescription = txtBuscarTerritory.Text;
+                        dataGridViewTerritories.DataSource = TerritoriesDAL.BuscarRegistroRegionDescription(RegionDescription);
+                        break;
                     default:
                         MessageBox.Show("Seleccione un criterio de búsqueda válido.");
                         break;
@@ -213,9 +217,12 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     txtBuscarTerritory.Text = "RegionID";
                     txtBuscarTerritory.ForeColor = Color.Gray;
                     break;
+                case "RegionDescription":
+                    txtBuscarTerritory.Text = "RegionDescription";
+                    txtBuscarTerritory.ForeColor = Color.Gray;
+                    break;
             }
         }
-
         private void txtBuscarTerritory_Enter(object sender, EventArgs e)
         {
             txtBuscarTerritory.Text = "";

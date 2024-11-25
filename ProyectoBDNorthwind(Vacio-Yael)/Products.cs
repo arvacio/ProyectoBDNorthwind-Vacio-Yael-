@@ -20,6 +20,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         public int ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
 
+        public string CompanyName { get; set; }
+        public string CategoryName { get; set; }
+
         // Constructores de Products
 
         public Products() { }

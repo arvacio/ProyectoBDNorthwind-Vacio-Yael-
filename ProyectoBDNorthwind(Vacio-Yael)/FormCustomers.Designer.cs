@@ -283,7 +283,7 @@
             // 
             // txtCustomerID
             // 
-            txtCustomerID.BackColor = SystemColors.ActiveBorder;
+            txtCustomerID.BackColor = SystemColors.Menu;
             txtCustomerID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtCustomerID.Location = new Point(206, 44);
             txtCustomerID.Name = "txtCustomerID";
@@ -401,24 +401,26 @@
             // butRefrescarCustomer
             // 
             butRefrescarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarCustomer.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescarCustomer.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butRefrescarCustomer.Location = new Point(902, 28);
+            butRefrescarCustomer.Location = new Point(874, 26);
             butRefrescarCustomer.Name = "butRefrescarCustomer";
-            butRefrescarCustomer.Size = new Size(108, 61);
+            butRefrescarCustomer.Size = new Size(125, 61);
             butRefrescarCustomer.TabIndex = 39;
-            butRefrescarCustomer.Text = "Refrescar";
             butRefrescarCustomer.UseVisualStyleBackColor = false;
             butRefrescarCustomer.Click += butRefrescarCustomer_Click;
             // 
             // butBuscarCustomer
             // 
             butBuscarCustomer.BackColor = SystemColors.ButtonHighlight;
+            butBuscarCustomer.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscarCustomer.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscarCustomer.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butBuscarCustomer.Location = new Point(762, 28);
+            butBuscarCustomer.Location = new Point(722, 28);
             butBuscarCustomer.Name = "butBuscarCustomer";
-            butBuscarCustomer.Size = new Size(108, 61);
+            butBuscarCustomer.Size = new Size(125, 61);
             butBuscarCustomer.TabIndex = 38;
-            butBuscarCustomer.Text = "Buscar";
             butBuscarCustomer.UseVisualStyleBackColor = false;
             butBuscarCustomer.Click += butBuscarCustomer_Click;
             // 

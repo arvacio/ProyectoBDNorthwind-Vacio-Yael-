@@ -10,6 +10,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
     {
         public int EmployeeID { get; set; }
         public string TerritoryID { get; set; }
+
+        public string FirstName { get; set; }
+        public string TerritoryDescription { get; set; }
         public EmployeeTerritories() { }
 
         public EmployeeTerritories(int EmployeeID, string Territory) 

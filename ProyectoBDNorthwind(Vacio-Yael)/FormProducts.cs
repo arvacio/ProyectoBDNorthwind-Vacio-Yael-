@@ -254,6 +254,17 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         string NoDiscontinued = "0";
                         dataGridViewProducts.DataSource = ProductsDAL.BuscarRegistroNoDiscontinued(NoDiscontinued);
                         break;
+                    case "CompanyName":
+                        string CompanyName = txtBuscarProducts.Text;
+                        dataGridViewProducts.DataSource = ProductsDAL.BuscarRegistroPorCompanyName(CompanyName);
+                        break;
+                    case "CategoryName":
+                        string CategoryName = txtBuscarProducts.Text;
+                        dataGridViewProducts.DataSource = ProductsDAL.BuscarRegistroPorCategoryName(CategoryName);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione un criterio de búsqueda válido.");
+                        break;
 
                 }
             }
@@ -312,20 +323,24 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     txtBuscarProducts.ForeColor = Color.Gray;
                     break;
                 case "Discontinued":
+                    txtBuscarProducts.Text = "";
                     txtBuscarProducts.Enabled = false;
                     txtBuscarProducts.ForeColor = Color.Gray;
                     break;
                 case "No Discontinued":
+                    txtBuscarProducts.Text = "";
                     txtBuscarProducts.Enabled = false;
                     txtBuscarProducts.ForeColor = Color.Gray;
                     break;
-
+                case "CompanyName":
+                    txtBuscarProducts.Text = "CompanyName";
+                    txtBuscarProducts.ForeColor = Color.Gray;
+                    break;
+                case "CategoryName":
+                    txtBuscarProducts.Text = "CategoryName";
+                    txtBuscarProducts.ForeColor = Color.Gray;
+                    break;
             }
-        }
-
-        private void txtBuscarProducts_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void txtBuscarProducts_Enter(object sender, EventArgs e)
@@ -333,6 +348,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             txtBuscarProducts.Text = "";
             txtBuscarProducts.ForeColor = Color.Black;
         }
+
+
     }
 }
 

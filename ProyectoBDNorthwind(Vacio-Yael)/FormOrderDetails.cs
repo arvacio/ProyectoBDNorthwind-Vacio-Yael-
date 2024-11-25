@@ -89,6 +89,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // boxOrderID
             // 
+            boxOrderID.BackColor = SystemColors.Menu;
             boxOrderID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boxOrderID.FormattingEnabled = true;
             boxOrderID.Location = new Point(210, 56);
@@ -98,6 +99,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // boxProductID
             // 
+            boxProductID.BackColor = SystemColors.Menu;
             boxProductID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boxProductID.FormattingEnabled = true;
             boxProductID.Location = new Point(210, 111);
@@ -255,24 +257,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // butRefrescarOrderDetails
             // 
             butRefrescarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarOrderDetails.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescarOrderDetails.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescarOrderDetails.Location = new Point(768, 30);
             butRefrescarOrderDetails.Name = "butRefrescarOrderDetails";
             butRefrescarOrderDetails.Size = new Size(92, 61);
             butRefrescarOrderDetails.TabIndex = 39;
-            butRefrescarOrderDetails.Text = "Refrescar";
             butRefrescarOrderDetails.UseVisualStyleBackColor = false;
             butRefrescarOrderDetails.Click += butRefrescarOrderDetails_Click;
             // 
             // butBuscarOrderDetails
             // 
             butBuscarOrderDetails.BackColor = SystemColors.ButtonHighlight;
+            butBuscarOrderDetails.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscarOrderDetails.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscarOrderDetails.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscarOrderDetails.Location = new Point(670, 30);
             butBuscarOrderDetails.Name = "butBuscarOrderDetails";
             butBuscarOrderDetails.Size = new Size(92, 61);
             butBuscarOrderDetails.TabIndex = 38;
-            butBuscarOrderDetails.Text = "Buscar";
             butBuscarOrderDetails.UseVisualStyleBackColor = false;
             butBuscarOrderDetails.Click += butBuscarOrderDetails_Click;
             // 
@@ -281,7 +285,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             boxBuscarOrderDetails.BackColor = SystemColors.Menu;
             boxBuscarOrderDetails.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscarOrderDetails.FormattingEnabled = true;
-            boxBuscarOrderDetails.Items.AddRange(new object[] { "OrderID", "ProductID", "UnitPrice", "Quantity", "Discount" });
+            boxBuscarOrderDetails.Items.AddRange(new object[] { "OrderID", "ProductID", "UnitPrice", "Quantity", "Discount", "ProductName" });
             boxBuscarOrderDetails.Location = new Point(148, 57);
             boxBuscarOrderDetails.Name = "boxBuscarOrderDetails";
             boxBuscarOrderDetails.Size = new Size(232, 36);
@@ -602,6 +606,13 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         float Discount = float.Parse(txtBuscarOrderDetails.Text);
                         dataGridViewOrderDetails.DataSource = OrderDetailsDAL.BuscarRegistroDiscount(Discount);
                         break;
+                    case "ProductName":
+                        string ProductName = txtBuscarOrderDetails.Text;
+                        dataGridViewOrderDetails.DataSource = OrderDetailsDAL.BuscarRegistroProductName(ProductName);
+                        break;
+                    default:
+                        MessageBox.Show("Seleccione un criterio de búsqueda válido.");
+                        break;
                 }
             }
             catch (Exception ex)
@@ -637,6 +648,10 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     break;
                 case "Discount":
                     txtBuscarOrderDetails.Text = "Discount";
+                    txtBuscarOrderDetails.ForeColor = Color.Gray;
+                    break;
+                case "ProductName":
+                    txtBuscarOrderDetails.Text = "ProductName";
                     txtBuscarOrderDetails.ForeColor = Color.Gray;
                     break;
             }

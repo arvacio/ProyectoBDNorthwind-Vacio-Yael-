@@ -192,24 +192,26 @@
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescar.Location = new Point(289, 187);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 61);
             butRefrescar.TabIndex = 39;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscar.Location = new Point(40, 187);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 61);
             butBuscar.TabIndex = 38;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
@@ -218,7 +220,7 @@
             boxBuscar.BackColor = SystemColors.Menu;
             boxBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscar.FormattingEnabled = true;
-            boxBuscar.Items.AddRange(new object[] { "EmployeeID", "TerritoryID" });
+            boxBuscar.Items.AddRange(new object[] { "EmployeeID", "TerritoryID", "FirstName", "TerritoryDescription" });
             boxBuscar.Location = new Point(181, 78);
             boxBuscar.Name = "boxBuscar";
             boxBuscar.Size = new Size(221, 36);
@@ -262,7 +264,7 @@
             dataGridViewET.Location = new Point(469, 52);
             dataGridViewET.Name = "dataGridViewET";
             dataGridViewET.RowHeadersWidth = 51;
-            dataGridViewET.Size = new Size(495, 730);
+            dataGridViewET.Size = new Size(590, 730);
             dataGridViewET.TabIndex = 53;
             dataGridViewET.SelectionChanged += dataGridViewET_SelectionChanged;
             // 
@@ -274,7 +276,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(974, 36);
+            menuStrip1.Size = new Size(1071, 36);
             menuStrip1.TabIndex = 56;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -311,7 +313,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(974, 794);
+            ClientSize = new Size(1071, 794);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(dataGridViewET);

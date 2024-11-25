@@ -41,30 +41,51 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "SELECT * FROM [Order Details]";
-                SqlCommand comando = new SqlCommand(query, conexion);
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con un JOIN entre Order Details y Products
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Agregar el ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
+
         public static int ModificarOrderDetails(OrderDetails orderDetails)
         {
             int result = 0;
@@ -125,132 +146,306 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from [Order Details] where OrderID =" + OrderID + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con JOIN entre Order Details y Products, para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE od.OrderID = @OrderID";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@OrderID", OrderID); // Usamos parámetros para evitar SQL Injection
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Agregar ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
+
         public static List<OrderDetails> BuscarRegistroProductID(int ProductID)
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from [Order Details] where ProductID =" + ProductID + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con JOIN entre Order Details y Products para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE od.ProductID = @ProductID";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@ProductID", ProductID); // Usamos parámetros para evitar SQL Injection
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Obtener ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
-        public static List<OrderDetails> BuscarRegistroUnitPrice(Decimal UnitPrice)
+
+        public static List<OrderDetails> BuscarRegistroUnitPrice(decimal UnitPrice)
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from [Order Details] where UnitPrice =" + UnitPrice + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con JOIN entre Order Details y Products para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE od.UnitPrice = @UnitPrice";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@UnitPrice", UnitPrice); // Usamos parámetros para evitar SQL Injection
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Obtener ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
+
         public static List<OrderDetails> BuscarRegistroQuantity(int Quantity)
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from [Order Details] where Quantity =" + Quantity + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con JOIN entre Order Details y Products para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE od.Quantity = @Quantity";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Quantity", Quantity); // Usamos parámetros para evitar SQL Injection
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Obtener ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
+
         public static List<OrderDetails> BuscarRegistroDiscount(float Discount)
         {
             List<OrderDetails> Lista = new List<OrderDetails>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from [Order Details] where Discount =" + Discount + "";
-                SqlCommand comando = new SqlCommand(query, conexion);
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    OrderDetails orderDetails = new OrderDetails();
+                    // Consulta SQL con JOIN entre Order Details y Products para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE od.Discount = @Discount";
 
-                    orderDetails.OrderID = reader.GetInt32(0);
-                    orderDetails.ProductID = reader.GetInt32(1);
-                    orderDetails.UnitPrice = reader.GetDecimal(2);
-                    orderDetails.Quantity = reader.GetInt16(3);
-                    orderDetails.Discount = reader.GetFloat(4);
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@Discount", Discount); // Usamos parámetros para evitar SQL Injection
 
-                    Lista.Add(orderDetails);
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Obtener ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
 
+        public static List<OrderDetails> BuscarRegistroProductName(string productName)
+        {
+            List<OrderDetails> Lista = new List<OrderDetails>();
+
+            try
+            {
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+                {
+                    // Consulta SQL con JOIN entre Order Details y Products para obtener ProductName
+                    string query = @"
+                SELECT od.OrderID, od.ProductID, od.UnitPrice, od.Quantity, od.Discount, p.ProductName
+                FROM [Order Details] od
+                INNER JOIN Products p ON od.ProductID = p.ProductID
+                WHERE p.ProductName = @ProductName";
+
+                    SqlCommand comando = new SqlCommand(query, conexion);
+                    comando.Parameters.AddWithValue("@ProductName", productName); // Usamos parámetros para evitar SQL Injection
+
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            OrderDetails orderDetails = new OrderDetails
+                            {
+                                OrderID = reader.GetInt32(0),
+                                ProductID = reader.GetInt32(1),
+                                UnitPrice = reader.GetDecimal(2),
+                                Quantity = reader.GetInt16(3),
+                                Discount = reader.GetFloat(4),
+                                ProductName = reader.GetString(5) // Obtener ProductName desde la consulta
+                            };
+
+                            Lista.Add(orderDetails);
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
+        }
     }
-    }
+}

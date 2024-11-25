@@ -340,7 +340,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             // txtSupplierID
             // 
-            txtSupplierID.BackColor = SystemColors.ActiveBorder;
+            txtSupplierID.BackColor = SystemColors.Menu;
             txtSupplierID.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtSupplierID.Location = new Point(206, 44);
             txtSupplierID.Name = "txtSupplierID";
@@ -458,24 +458,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // butRefrescarSuppliers
             // 
             butRefrescarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarSuppliers.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescarSuppliers.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            butRefrescarSuppliers.Location = new Point(902, 28);
+            butRefrescarSuppliers.Location = new Point(876, 28);
             butRefrescarSuppliers.Name = "butRefrescarSuppliers";
-            butRefrescarSuppliers.Size = new Size(108, 61);
+            butRefrescarSuppliers.Size = new Size(127, 61);
             butRefrescarSuppliers.TabIndex = 39;
-            butRefrescarSuppliers.Text = "Refrescar";
             butRefrescarSuppliers.UseVisualStyleBackColor = false;
             butRefrescarSuppliers.Click += butRefrescarSuppliers_Click;
             // 
             // butBuscarSuppliers
             // 
             butBuscarSuppliers.BackColor = SystemColors.ButtonHighlight;
+            butBuscarSuppliers.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscarSuppliers.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscarSuppliers.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            butBuscarSuppliers.Location = new Point(762, 28);
+            butBuscarSuppliers.Location = new Point(717, 28);
             butBuscarSuppliers.Name = "butBuscarSuppliers";
-            butBuscarSuppliers.Size = new Size(108, 61);
+            butBuscarSuppliers.Size = new Size(127, 61);
             butBuscarSuppliers.TabIndex = 38;
-            butBuscarSuppliers.Text = "Buscar";
             butBuscarSuppliers.UseVisualStyleBackColor = false;
             butBuscarSuppliers.Click += butBuscarSuppliers_Click;
             // 

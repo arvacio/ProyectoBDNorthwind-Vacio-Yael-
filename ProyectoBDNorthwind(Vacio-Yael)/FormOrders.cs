@@ -291,6 +291,14 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         string ShipCountry = txtBuscarOrders.Text;
                         dataGridViewOrders.DataSource = OrdersDAL.BuscarRegistroShipCountry(ShipCountry);
                         break;
+                    case "CompanyName":
+                        string CompanyName = txtBuscarOrders.Text;
+                        dataGridViewOrders.DataSource = OrdersDAL.BuscarRegistroCompanyName(CompanyName);
+                        break;
+                    case "FirstName":
+                        string FirstName = txtBuscarOrders.Text;
+                        dataGridViewOrders.DataSource = OrdersDAL.BuscarRegistroFirstName(FirstName);
+                        break;
                     default:
                         MessageBox.Show("Seleccione un criterio de búsqueda válido.");
                         break;
@@ -369,6 +377,14 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     break;
                 case "ShipCountry":
                     txtBuscarOrders.Text = "ShipCountry";
+                    txtBuscarOrders.ForeColor = Color.Gray;
+                    break;
+                case "CompanyName":
+                    txtBuscarOrders.Text = "CompanyName";
+                    txtBuscarOrders.ForeColor = Color.Gray;
+                    break;
+                case "FirstName":
+                    txtBuscarOrders.Text = "FirstName";
                     txtBuscarOrders.ForeColor = Color.Gray;
                     break;
             }

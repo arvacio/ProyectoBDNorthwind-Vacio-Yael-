@@ -280,7 +280,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         break;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error al Buscar");
             }
@@ -358,5 +358,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             txtBuscarEmployees.ForeColor = Color.Black;
         }
 
+        private void butInsertarImagen_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion Desactivada");
+        }
     }
 }

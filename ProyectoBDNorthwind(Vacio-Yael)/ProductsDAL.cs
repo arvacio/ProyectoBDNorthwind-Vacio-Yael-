@@ -51,35 +51,60 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             List<Products> Lista = new List<Products>();
 
-            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            try
             {
-                string query = "select * from products";
-                SqlCommand comando = new SqlCommand(query, conexion);
-
-                SqlDataReader reader = comando.ExecuteReader();
-
-                while (reader.Read())
+                using (SqlConnection conexion = BDGeneral.ObtenerConexion())
                 {
-                    Products products = new Products();
+                    // Consulta SQL con dos JOINs: uno con Suppliers y otro con Categories
+                    string query = @"
+                SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                       p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                       s.CompanyName, c.CategoryName
+                FROM Products p
+                INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+                INNER JOIN Categories c ON p.CategoryID = c.CategoryID";
 
-                    products.ProductID = reader.GetInt32(0);
-                    products.ProductName = reader.GetString(1);
-                    products.SupplierID = reader.GetInt32(2);
-                    products.CategoryID = reader.GetInt32(3);
-                    products.QuantityPerUnit = reader.GetString(4);
-                    products.UnitPrice = reader.GetDecimal(5);
-                    products.UnitsInStock= reader.GetInt16(6);
-                    products.UnitsOnOrder= reader.GetInt16(7);
-                    products.ReorderLevel = reader.GetInt16(8);
-                    products.Discontinued = reader.GetBoolean(9);
+                    SqlCommand comando = new SqlCommand(query, conexion);
 
+                    using (SqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Products product = new Products
+                            {
+                                ProductID = reader.GetInt32(0),
+                                ProductName = reader.GetString(1),
+                                SupplierID = reader.GetInt32(2),
+                                CategoryID = reader.GetInt32(3),
+                                QuantityPerUnit = reader.GetString(4),
+                                UnitPrice = reader.GetDecimal(5),
+                                UnitsInStock = reader.GetInt16(6),
+                                UnitsOnOrder = reader.GetInt16(7),
+                                ReorderLevel = reader.GetInt16(8),
+                                Discontinued = reader.GetBoolean(9),
+                                CompanyName = reader.GetString(10),  // Obtener CompanyName de Suppliers
+                                CategoryName = reader.GetString(11)  // Obtener CategoryName de Categories
+                            };
 
-                    Lista.Add(products);
+                            Lista.Add(product);
+                        }
+                    }
                 }
-                conexion.Close();
-                return Lista;
             }
+            catch (SqlException ex)
+            {
+                // Manejo de excepciones de base de datos
+                Console.WriteLine("Error al consultar la base de datos: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de otras excepciones
+                Console.WriteLine("Error inesperado: " + ex.Message);
+            }
+
+            return Lista;
         }
+
 
         public static int ModificarProducts(Products products)
         {
@@ -137,8 +162,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where ProductID =" + ProductID + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.ProductID = @ProductID";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@ProductID", ProductID);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -155,6 +191,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -168,8 +207,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where ProductName ='" + ProductName + "'";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.ProductName = @ProductName";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@ProductName", ProductName);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -186,12 +236,16 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
                 return Lista;
             }
         }
+
 
         public static List<Products> BuscarRegistroSupplierID(int SupplierID)
         {
@@ -199,8 +253,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where SupplierID =" + SupplierID + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.SupplierID = @SupplierID";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@SupplierID", SupplierID);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -217,6 +282,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -224,14 +292,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
         }
 
+
         public static List<Products> BuscarRegistroCategoryID(int CategoryID)
         {
             List<Products> Lista = new List<Products>();
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where CategoryID =" + CategoryID + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.CategoryID = @CategoryID";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@CategoryID", CategoryID);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -248,6 +328,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -261,8 +344,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where QuantityPerUnit ='" + QuantityPerUnit + "'";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.QuantityPerUnit = @QuantityPerUnit";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@QuantityPerUnit", QuantityPerUnit);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -279,6 +373,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -292,8 +389,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where UnitPrice =" + UnitPrice + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.UnitPrice = @UnitPrice";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@UnitPrice", UnitPrice);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -310,6 +418,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -323,8 +434,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where UnitsInStock =" + UnitsInStock + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.UnitsInStock = @UnitsInStock";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@UnitsInStock", UnitsInStock);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -341,21 +463,35 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
                 return Lista;
             }
         }
-       
+
         public static List<Products> BuscarRegistroUnitsOnOrder(int UnitsOnOrder)
         {
             List<Products> Lista = new List<Products>();
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where UnitsOnOrder =" + UnitsOnOrder + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.UnitsOnOrder = @UnitsOnOrder";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@UnitsOnOrder", UnitsOnOrder);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -372,6 +508,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -385,8 +524,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
-                string query = "select * from products where ReorderLevel =" + ReorderLevel + "";
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.ReorderLevel = @ReorderLevel";
+
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@ReorderLevel", ReorderLevel);  // Usamos parámetros para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -403,6 +553,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -410,15 +563,26 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
         }
 
-        public static List<Products> BuscarRegistroDiscontinued(string Discontinued)
+
+        public static List<Products> BuscarRegistroDiscontinued(string discontinued)
         {
             List<Products> Lista = new List<Products>();
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.Discontinued = @Discontinued";
 
-                string query = "select * from products where Discontinued =" + Discontinued + "";
                 SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@Discontinued", discontinued);  // Usamos parámetro para evitar inyección SQL
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -435,6 +599,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -442,15 +609,25 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
         }
 
-        public static List<Products> BuscarRegistroNoDiscontinued(string NoDiscontinued)
+
+        public static List<Products> BuscarRegistroNoDiscontinued(string nodiscontinued)
         {
             List<Products> Lista = new List<Products>();
 
             using (SqlConnection conexion = BDGeneral.ObtenerConexion())
             {
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE p.Discontinued = 0";  // 0 es false, lo que indica que no están discontinuados
 
-                string query = "select * from products where Discontinued =" + NoDiscontinued + "";
                 SqlCommand comando = new SqlCommand(query, conexion);
+
                 SqlDataReader reader = comando.ExecuteReader();
 
                 while (reader.Read())
@@ -467,6 +644,9 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     products.UnitsOnOrder = reader.GetInt16(7);
                     products.ReorderLevel = reader.GetInt16(8);
                     products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
                     Lista.Add(products);
                 }
                 conexion.Close();
@@ -474,11 +654,94 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             }
         }
 
+        public static List<Products> BuscarRegistroPorCompanyName(string companyName)
+        {
+            List<Products> Lista = new List<Products>();
 
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE s.CompanyName LIKE @CompanyName";  // Usamos LIKE para permitir coincidencias parciales
 
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@CompanyName", "%" + companyName + "%");  // Agregamos el comodín % para buscar coincidencias parciales
 
+                SqlDataReader reader = comando.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Products products = new Products();
 
+                    products.ProductID = reader.GetInt32(0);
+                    products.ProductName = reader.GetString(1);
+                    products.SupplierID = reader.GetInt32(2);
+                    products.CategoryID = reader.GetInt32(3);
+                    products.QuantityPerUnit = reader.GetString(4);
+                    products.UnitPrice = reader.GetDecimal(5);
+                    products.UnitsInStock = reader.GetInt16(6);
+                    products.UnitsOnOrder = reader.GetInt16(7);
+                    products.ReorderLevel = reader.GetInt16(8);
+                    products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
+                    Lista.Add(products);
+                }
+                conexion.Close();
+                return Lista;
+            }
+        }
+        public static List<Products> BuscarRegistroPorCategoryName(string categoryName)
+        {
+            List<Products> Lista = new List<Products>();
+
+            using (SqlConnection conexion = BDGeneral.ObtenerConexion())
+            {
+                // Consulta SQL con INNER JOINs para obtener CompanyName y CategoryName
+                string query = @"
+            SELECT p.ProductID, p.ProductName, p.SupplierID, p.CategoryID, p.QuantityPerUnit, 
+                   p.UnitPrice, p.UnitsInStock, p.UnitsOnOrder, p.ReorderLevel, p.Discontinued,
+                   s.CompanyName, c.CategoryName
+            FROM Products p
+            INNER JOIN Suppliers s ON p.SupplierID = s.SupplierID
+            INNER JOIN Categories c ON p.CategoryID = c.CategoryID
+            WHERE c.CategoryName LIKE @CategoryName";  // Usamos LIKE para permitir coincidencias parciales
+
+                SqlCommand comando = new SqlCommand(query, conexion);
+                comando.Parameters.AddWithValue("@CategoryName", "%" + categoryName + "%");  // Comodín % para búsqueda parcial
+
+                SqlDataReader reader = comando.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Products products = new Products();
+
+                    products.ProductID = reader.GetInt32(0);
+                    products.ProductName = reader.GetString(1);
+                    products.SupplierID = reader.GetInt32(2);
+                    products.CategoryID = reader.GetInt32(3);
+                    products.QuantityPerUnit = reader.GetString(4);
+                    products.UnitPrice = reader.GetDecimal(5);
+                    products.UnitsInStock = reader.GetInt16(6);
+                    products.UnitsOnOrder = reader.GetInt16(7);
+                    products.ReorderLevel = reader.GetInt16(8);
+                    products.Discontinued = reader.GetBoolean(9);
+                    products.CompanyName = reader.GetString(10);  // Obtener CompanyName de Suppliers
+                    products.CategoryName = reader.GetString(11);  // Obtener CategoryName de Categories
+
+                    Lista.Add(products);
+                }
+                conexion.Close();
+                return Lista;
+            }
+        }
 
     }
 }

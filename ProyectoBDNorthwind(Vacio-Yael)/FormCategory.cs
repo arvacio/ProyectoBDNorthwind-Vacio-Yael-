@@ -226,6 +226,11 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             txtBuscarCategories.Text = "";
             txtBuscarCategories.ForeColor = Color.Black;
         }
+
+        private void butInsertarImagen_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion Desactivada");
+        }
     }
 }
 

@@ -121,6 +121,7 @@
             // 
             // boxEmployeeID
             // 
+            boxEmployeeID.BackColor = SystemColors.Menu;
             boxEmployeeID.FormattingEnabled = true;
             boxEmployeeID.Location = new Point(174, 145);
             boxEmployeeID.Name = "boxEmployeeID";
@@ -129,6 +130,7 @@
             // 
             // boxCustomerID
             // 
+            boxCustomerID.BackColor = SystemColors.Menu;
             boxCustomerID.FormattingEnabled = true;
             boxCustomerID.Location = new Point(174, 107);
             boxCustomerID.Name = "boxCustomerID";
@@ -147,7 +149,7 @@
             // 
             // txtOrderID
             // 
-            txtOrderID.BackColor = SystemColors.ActiveBorder;
+            txtOrderID.BackColor = SystemColors.Menu;
             txtOrderID.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtOrderID.Location = new Point(222, 14);
             txtOrderID.Name = "txtOrderID";
@@ -448,24 +450,26 @@
             // butRefrescarOrders
             // 
             butRefrescarOrders.BackColor = SystemColors.ButtonHighlight;
+            butRefrescarOrders.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescarOrders.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butRefrescarOrders.Location = new Point(902, 28);
+            butRefrescarOrders.Location = new Point(879, 28);
             butRefrescarOrders.Name = "butRefrescarOrders";
-            butRefrescarOrders.Size = new Size(108, 61);
+            butRefrescarOrders.Size = new Size(116, 61);
             butRefrescarOrders.TabIndex = 39;
-            butRefrescarOrders.Text = "Refrescar";
             butRefrescarOrders.UseVisualStyleBackColor = false;
             butRefrescarOrders.Click += butRefrescarOrders_Click;
             // 
             // butBuscarOrders
             // 
             butBuscarOrders.BackColor = SystemColors.ButtonHighlight;
+            butBuscarOrders.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscarOrders.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butBuscarOrders.Location = new Point(762, 28);
+            butBuscarOrders.Location = new Point(708, 28);
             butBuscarOrders.Name = "butBuscarOrders";
-            butBuscarOrders.Size = new Size(108, 61);
+            butBuscarOrders.Size = new Size(116, 61);
             butBuscarOrders.TabIndex = 38;
-            butBuscarOrders.Text = "Buscar";
             butBuscarOrders.UseVisualStyleBackColor = false;
             butBuscarOrders.Click += butBuscarOrders_Click;
             // 
@@ -474,7 +478,7 @@
             boxBuscarOrders.BackColor = SystemColors.Menu;
             boxBuscarOrders.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscarOrders.FormattingEnabled = true;
-            boxBuscarOrders.Items.AddRange(new object[] { "OrderID", "CustomerID", "EmployeeID", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipName", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry" });
+            boxBuscarOrders.Items.AddRange(new object[] { "OrderID", "CustomerID", "EmployeeID", "OrderDate", "RequiredDate", "ShippedDate", "ShipVia", "Freight", "ShipName", "ShipAddress", "ShipCity", "ShipRegion", "ShipPostalCode", "ShipCountry", "CompanyName", "FirstName" });
             boxBuscarOrders.Location = new Point(147, 58);
             boxBuscarOrders.Name = "boxBuscarOrders";
             boxBuscarOrders.Size = new Size(232, 36);
@@ -560,7 +564,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormOrders";
-            Text = "FormOrders";
+            Text = "|";
             Load += FormOrders_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

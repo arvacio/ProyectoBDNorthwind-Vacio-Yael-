@@ -75,12 +75,13 @@
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butRefrescar.Location = new Point(315, 167);
+            butRefrescar.Location = new Point(286, 167);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 50);
             butRefrescar.TabIndex = 39;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
@@ -88,7 +89,7 @@
             // 
             label36.AutoSize = true;
             label36.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(104, 0);
+            label36.Location = new Point(105, 12);
             label36.Name = "label36";
             label36.Size = new Size(298, 43);
             label36.TabIndex = 33;
@@ -97,12 +98,13 @@
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butBuscar.Location = new Point(70, 167);
+            butBuscar.Location = new Point(101, 167);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 50);
             butBuscar.TabIndex = 38;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
@@ -110,7 +112,7 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label35.Location = new Point(40, 58);
+            label35.Location = new Point(32, 65);
             label35.Name = "label35";
             label35.Size = new Size(135, 31);
             label35.TabIndex = 34;
@@ -132,7 +134,7 @@
             boxBuscar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscar.FormattingEnabled = true;
             boxBuscar.Items.AddRange(new object[] { "CustomerID", "CustomerTypeID" });
-            boxBuscar.Location = new Point(216, 58);
+            boxBuscar.Location = new Point(208, 65);
             boxBuscar.Name = "boxBuscar";
             boxBuscar.Size = new Size(260, 36);
             boxBuscar.TabIndex = 37;
@@ -156,6 +158,7 @@
             // 
             // boxCustomerTypeID
             // 
+            boxCustomerTypeID.BackColor = SystemColors.Menu;
             boxCustomerTypeID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxCustomerTypeID.FormattingEnabled = true;
             boxCustomerTypeID.Location = new Point(286, 231);
@@ -186,6 +189,7 @@
             // 
             // boxCustomerID
             // 
+            boxCustomerID.BackColor = SystemColors.Menu;
             boxCustomerID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxCustomerID.FormattingEnabled = true;
             boxCustomerID.Location = new Point(254, 58);
@@ -310,6 +314,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(958, 696);
             Controls.Add(panel2);
             Controls.Add(panel3);

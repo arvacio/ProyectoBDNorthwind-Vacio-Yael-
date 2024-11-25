@@ -194,6 +194,14 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                         string TerritoryID = txtBuscarET.Text;
                         dataGridViewET.DataSource = EmployeeTerritoriesDAL.BuscarRegistroTerritoryID(TerritoryID);
                         break;
+                    case "FirstName":
+                        string FirstName = txtBuscarET.Text;
+                        dataGridViewET.DataSource = EmployeeTerritoriesDAL.BuscarRegistroFirstName(FirstName);
+                        break;
+                    case "TerritoryDescription":
+                        string TerritoryDescription = txtBuscarET.Text;
+                        dataGridViewET.DataSource = EmployeeTerritoriesDAL.BuscarRegistroTerritoryDescription(TerritoryDescription);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -217,6 +225,14 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                     break;
                 case "TerritoryID":
                     txtBuscarET.Text = "TerritoryID";
+                    txtBuscarET.ForeColor = Color.Gray;
+                    break;
+                case "FirstName":
+                    txtBuscarET.Text = "FirstName";
+                    txtBuscarET.ForeColor = Color.Gray;
+                    break;
+                case "TerritoryDescription":
+                    txtBuscarET.Text = "TerritoryDescription";
                     txtBuscarET.ForeColor = Color.Gray;
                     break;
             }

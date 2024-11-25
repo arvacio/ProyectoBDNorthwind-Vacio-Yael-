@@ -13,6 +13,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         public decimal UnitPrice { get; set; }
         public int Quantity { get; set; }
         public float Discount { get; set; }
+        public string ProductName { get; set; } // Nueva propiedad para ProductName
 
         public OrderDetails() { }
 

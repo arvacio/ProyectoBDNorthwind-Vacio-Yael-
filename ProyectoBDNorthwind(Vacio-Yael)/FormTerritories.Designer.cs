@@ -76,12 +76,13 @@
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            butRefrescar.Location = new Point(315, 187);
+            butRefrescar.Location = new Point(289, 187);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(117, 61);
             butRefrescar.TabIndex = 39;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
@@ -98,12 +99,13 @@
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            butBuscar.Location = new Point(70, 187);
+            butBuscar.Location = new Point(91, 187);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(117, 61);
             butBuscar.TabIndex = 38;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
@@ -132,7 +134,7 @@
             boxBuscarTerritory.BackColor = SystemColors.Menu;
             boxBuscarTerritory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxBuscarTerritory.FormattingEnabled = true;
-            boxBuscarTerritory.Items.AddRange(new object[] { "TerritoryID", "TerritoryDescription", "RegionID" });
+            boxBuscarTerritory.Items.AddRange(new object[] { "TerritoryID", "TerritoryDescription", "RegionID", "RegionDescription" });
             boxBuscarTerritory.Location = new Point(216, 78);
             boxBuscarTerritory.Name = "boxBuscarTerritory";
             boxBuscarTerritory.Size = new Size(260, 36);
@@ -158,6 +160,7 @@
             // 
             // boxRegionID
             // 
+            boxRegionID.BackColor = SystemColors.Menu;
             boxRegionID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             boxRegionID.FormattingEnabled = true;
             boxRegionID.Location = new Point(289, 260);
@@ -287,7 +290,7 @@
             dataGridViewTerritories.Location = new Point(532, 48);
             dataGridViewTerritories.Name = "dataGridViewTerritories";
             dataGridViewTerritories.RowHeadersWidth = 51;
-            dataGridViewTerritories.Size = new Size(486, 730);
+            dataGridViewTerritories.Size = new Size(532, 730);
             dataGridViewTerritories.TabIndex = 57;
             dataGridViewTerritories.SelectionChanged += dataGridViewTerritory_SelectionChanged;
             // 
@@ -299,7 +302,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1030, 36);
+            menuStrip1.Size = new Size(1076, 36);
             menuStrip1.TabIndex = 60;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -321,7 +324,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1030, 787);
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(1076, 787);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(dataGridViewTerritories);

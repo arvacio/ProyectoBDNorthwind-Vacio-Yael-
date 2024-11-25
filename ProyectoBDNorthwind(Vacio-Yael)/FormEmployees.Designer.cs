@@ -145,6 +145,7 @@
             butInsertarImagen.TabIndex = 48;
             butInsertarImagen.Text = "Insertar Imagen";
             butInsertarImagen.UseVisualStyleBackColor = false;
+            butInsertarImagen.Click += butInsertarImagen_Click;
             // 
             // label1
             // 
@@ -167,7 +168,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.BackColor = SystemColors.ButtonFace;
+            txtLastName.BackColor = SystemColors.Menu;
             txtLastName.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLastName.Location = new Point(29, 173);
             txtLastName.Name = "txtLastName";
@@ -565,6 +566,7 @@
             // 
             // boxTitleOfCourtesy
             // 
+            boxTitleOfCourtesy.BackColor = SystemColors.Menu;
             boxTitleOfCourtesy.FormattingEnabled = true;
             boxTitleOfCourtesy.Items.AddRange(new object[] { "Mr.", "Ms.", "Mrs.", "Dr.", "Prof.", "Sir." });
             boxTitleOfCourtesy.Location = new Point(29, 342);
@@ -588,30 +590,32 @@
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Zoom;
             butRefrescar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butRefrescar.Location = new Point(29, 149);
             butRefrescar.Name = "butRefrescar";
             butRefrescar.Size = new Size(192, 32);
             butRefrescar.TabIndex = 91;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Zoom;
             butBuscar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             butBuscar.Location = new Point(29, 111);
             butBuscar.Name = "butBuscar";
             butBuscar.Size = new Size(192, 32);
             butBuscar.TabIndex = 90;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
             // txtBuscarEmployees
             // 
-            txtBuscarEmployees.BackColor = SystemColors.ButtonFace;
+            txtBuscarEmployees.BackColor = SystemColors.Menu;
             txtBuscarEmployees.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBuscarEmployees.Location = new Point(29, 78);
             txtBuscarEmployees.Name = "txtBuscarEmployees";
@@ -621,6 +625,7 @@
             // 
             // BoxBuscarEmployees
             // 
+            BoxBuscarEmployees.BackColor = SystemColors.Menu;
             BoxBuscarEmployees.FormattingEnabled = true;
             BoxBuscarEmployees.Items.AddRange(new object[] { "EmployeeID", "LastName", "FirstName", "Title", "BirthDate", "HireDate", "Address", "City", "Region", "PostalCode", "Country", "HomePhone", "Extension" });
             BoxBuscarEmployees.Location = new Point(29, 44);

@@ -70,7 +70,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1174, 36);
+            menuStrip1.Size = new Size(1135, 36);
             menuStrip1.TabIndex = 64;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -99,40 +99,42 @@
             panel2.Controls.Add(BoxBuscarCategories);
             panel2.Location = new Point(472, 41);
             panel2.Name = "panel2";
-            panel2.Size = new Size(695, 201);
+            panel2.Size = new Size(657, 177);
             panel2.TabIndex = 63;
             // 
             // butRefrescar
             // 
             butRefrescar.BackColor = SystemColors.ButtonHighlight;
+            butRefrescar.BackgroundImage = Properties.Resources.refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_;
+            butRefrescar.BackgroundImageLayout = ImageLayout.Center;
             butRefrescar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
-            butRefrescar.Location = new Point(425, 134);
+            butRefrescar.Location = new Point(463, 95);
             butRefrescar.Name = "butRefrescar";
-            butRefrescar.Size = new Size(225, 51);
+            butRefrescar.Size = new Size(157, 64);
             butRefrescar.TabIndex = 39;
-            butRefrescar.Text = "Refrescar";
             butRefrescar.UseVisualStyleBackColor = false;
             butRefrescar.Click += butRefrescar_Click;
             // 
             // label36
             // 
             label36.AutoSize = true;
-            label36.Font = new Font("Sitka Banner", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label36.Location = new Point(40, 22);
+            label36.Font = new Font("Sitka Banner", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label36.Location = new Point(52, 12);
             label36.Name = "label36";
-            label36.Size = new Size(298, 43);
+            label36.Size = new Size(342, 49);
             label36.TabIndex = 33;
             label36.Text = "Busqueda De Registros";
             // 
             // butBuscar
             // 
             butBuscar.BackColor = SystemColors.ButtonHighlight;
+            butBuscar.BackgroundImage = Properties.Resources.search_16dp_000000_FILL0_wght500_GRAD0_opsz20;
+            butBuscar.BackgroundImageLayout = ImageLayout.Center;
             butBuscar.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold);
-            butBuscar.Location = new Point(40, 134);
+            butBuscar.Location = new Point(463, 20);
             butBuscar.Name = "butBuscar";
-            butBuscar.Size = new Size(225, 51);
+            butBuscar.Size = new Size(157, 64);
             butBuscar.TabIndex = 38;
-            butBuscar.Text = "Buscar";
             butBuscar.UseVisualStyleBackColor = false;
             butBuscar.Click += butBuscar_Click;
             // 
@@ -150,9 +152,9 @@
             // 
             txtBuscarCategories.BackColor = SystemColors.Menu;
             txtBuscarCategories.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtBuscarCategories.Location = new Point(425, 78);
+            txtBuscarCategories.Location = new Point(52, 123);
             txtBuscarCategories.Name = "txtBuscarCategories";
-            txtBuscarCategories.Size = new Size(252, 34);
+            txtBuscarCategories.Size = new Size(350, 34);
             txtBuscarCategories.TabIndex = 35;
             txtBuscarCategories.Enter += txtBuscarCategories_Enter;
             // 
@@ -197,6 +199,7 @@
             butInsertarImagen.TabIndex = 50;
             butInsertarImagen.Text = "Insertar Imagen";
             butInsertarImagen.UseVisualStyleBackColor = false;
+            butInsertarImagen.Click += butInsertarImagen_Click;
             // 
             // picCategoryPicture
             // 
@@ -336,10 +339,10 @@
             dataGridViewCategories.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCategories.BackgroundColor = SystemColors.ActiveCaption;
             dataGridViewCategories.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCategories.Location = new Point(472, 248);
+            dataGridViewCategories.Location = new Point(472, 224);
             dataGridViewCategories.Name = "dataGridViewCategories";
             dataGridViewCategories.RowHeadersWidth = 51;
-            dataGridViewCategories.Size = new Size(695, 501);
+            dataGridViewCategories.Size = new Size(657, 525);
             dataGridViewCategories.TabIndex = 61;
             dataGridViewCategories.SelectionChanged += dataGridViewCategories_SelectionChanged;
             // 
@@ -348,7 +351,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
-            ClientSize = new Size(1174, 755);
+            ClientSize = new Size(1135, 755);
             Controls.Add(menuStrip1);
             Controls.Add(panel2);
             Controls.Add(panel3);

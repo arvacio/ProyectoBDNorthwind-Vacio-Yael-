@@ -63,6 +63,56 @@ namespace ProyectoBDNorthwind_Vacio_Yael_.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap analytics_16dp_000000_FILL0_wght500_GRAD_25_opsz20 {
+            get {
+                object obj = ResourceManager.GetObject("analytics_16dp_000000_FILL0_wght500_GRAD-25_opsz20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap refresh_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_ {
+            get {
+                object obj = ResourceManager.GetObject("refresh_16dp_000000_FILL0_wght500_GRAD-25_opsz20 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_16dp_000000_FILL0_wght500_GRAD_25_opsz20__1_ {
+            get {
+                object obj = ResourceManager.GetObject("search_16dp_000000_FILL0_wght500_GRAD-25_opsz20 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_16dp_000000_FILL0_wght500_GRAD0_opsz20 {
+            get {
+                object obj = ResourceManager.GetObject("search_16dp_000000_FILL0_wght500_GRAD0_opsz20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("search_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WhatsApp_Image_2024_11_22_at_2_11_24_AM {
             get {
                 object obj = ResourceManager.GetObject("WhatsApp Image 2024-11-22 at 2.11.24 AM", resourceCulture);
