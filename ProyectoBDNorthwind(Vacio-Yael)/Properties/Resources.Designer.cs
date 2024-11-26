@@ -63,9 +63,59 @@ namespace ProyectoBDNorthwind_Vacio_Yael_.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin_panel_settings_20dp_255290_FILL0_wght600_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("admin_panel_settings_20dp_255290_FILL0_wght600_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap analytics_16dp_000000_FILL0_wght500_GRAD_25_opsz20 {
             get {
                 object obj = ResourceManager.GetObject("analytics_16dp_000000_FILL0_wght500_GRAD-25_opsz20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondo_azul_para_textura {
+            get {
+                object obj = ResourceManager.GetObject("fondo-azul-para-textura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondo_azul_para_textura1 {
+            get {
+                object obj = ResourceManager.GetObject("fondo-azul-para-textura1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_20dp_255290_FILL0_wght600_GRAD0_opsz20 {
+            get {
+                object obj = ResourceManager.GetObject("person_20dp_255290_FILL0_wght600_GRAD0_opsz20", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person_apron_20dp_255290_FILL0_wght600_GRAD0_opsz20 {
+            get {
+                object obj = ResourceManager.GetObject("person_apron_20dp_255290_FILL0_wght600_GRAD0_opsz20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

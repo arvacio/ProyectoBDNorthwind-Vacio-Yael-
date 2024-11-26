@@ -26,15 +26,19 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void butGuardarProducts_Click(object sender, EventArgs e)
         {
             Products products = new Products();
-
-            products.ProductName = txtProductName.Text;
-            products.SupplierID = Convert.ToInt32(boxSupplierID.SelectedValue);
-            products.CategoryID = Convert.ToInt32(boxCategoryID.SelectedValue);
-            products.QuantityPerUnit = txtQuantityPerUnit.Text;
-            products.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
-            products.UnitsInStock = Convert.ToInt16(txtUnitsInStock.Text);
-            products.UnitsOnOrder = Convert.ToInt16(txtUnitsOnOrder.Text);
-            products.ReorderLevel = Convert.ToInt16(txtReorderLevel.Text);
+            try
+            {
+                products.ProductName = txtProductName.Text;
+                products.SupplierID = Convert.ToInt32(boxSupplierID.SelectedValue);
+                products.CategoryID = Convert.ToInt32(boxCategoryID.SelectedValue);
+                products.QuantityPerUnit = txtQuantityPerUnit.Text;
+                products.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
+                products.UnitsInStock = Convert.ToInt16(txtUnitsInStock.Text);
+                products.UnitsOnOrder = Convert.ToInt16(txtUnitsOnOrder.Text);
+                products.ReorderLevel = Convert.ToInt16(txtReorderLevel.Text);
+            } catch {
+                MessageBox.Show("Datos Invalidos");
+            }
 
             if (BoxDiscontinued.Text == "Si")
                 products.Discontinued = true;

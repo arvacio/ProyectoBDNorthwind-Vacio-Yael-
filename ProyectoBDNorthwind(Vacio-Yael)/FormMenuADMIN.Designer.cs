@@ -71,6 +71,7 @@
             label3 = new Label();
             label2 = new Label();
             tabControl1 = new TabControl();
+            label4 = new Label();
             menuStrip1.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage2.SuspendLayout();
@@ -130,14 +131,14 @@
             // productsToolStripMenuItem
             // 
             productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            productsToolStripMenuItem.Size = new Size(224, 32);
+            productsToolStripMenuItem.Size = new Size(201, 32);
             productsToolStripMenuItem.Text = "Products";
             productsToolStripMenuItem.Click += productsToolStripMenuItem_Click_1;
             // 
             // categoriesToolStripMenuItem
             // 
             categoriesToolStripMenuItem.Name = "categoriesToolStripMenuItem";
-            categoriesToolStripMenuItem.Size = new Size(224, 32);
+            categoriesToolStripMenuItem.Size = new Size(201, 32);
             categoriesToolStripMenuItem.Text = "Categories";
             categoriesToolStripMenuItem.Click += categoriesToolStripMenuItem_Click_1;
             // 
@@ -174,14 +175,14 @@
             // suppliersToolStripMenuItem
             // 
             suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            suppliersToolStripMenuItem.Size = new Size(224, 32);
+            suppliersToolStripMenuItem.Size = new Size(188, 32);
             suppliersToolStripMenuItem.Text = "Suppliers";
             suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click_1;
             // 
             // shippersToolStripMenuItem
             // 
             shippersToolStripMenuItem.Name = "shippersToolStripMenuItem";
-            shippersToolStripMenuItem.Size = new Size(224, 32);
+            shippersToolStripMenuItem.Size = new Size(188, 32);
             shippersToolStripMenuItem.Text = "Shippers";
             shippersToolStripMenuItem.Click += shippersToolStripMenuItem_Click_1;
             // 
@@ -196,14 +197,14 @@
             // territoriesToolStripMenuItem
             // 
             territoriesToolStripMenuItem.Name = "territoriesToolStripMenuItem";
-            territoriesToolStripMenuItem.Size = new Size(224, 32);
+            territoriesToolStripMenuItem.Size = new Size(197, 32);
             territoriesToolStripMenuItem.Text = "Territories";
             territoriesToolStripMenuItem.Click += territoriesToolStripMenuItem_Click_1;
             // 
             // regionToolStripMenuItem
             // 
             regionToolStripMenuItem.Name = "regionToolStripMenuItem";
-            regionToolStripMenuItem.Size = new Size(224, 32);
+            regionToolStripMenuItem.Size = new Size(197, 32);
             regionToolStripMenuItem.Text = "Region";
             regionToolStripMenuItem.Click += regionToolStripMenuItem_Click_1;
             // 
@@ -262,12 +263,14 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Sitka Small", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(12, 61);
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Sitka Small", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 62);
             label1.Name = "label1";
-            label1.Size = new Size(428, 59);
+            label1.Size = new Size(508, 65);
             label1.TabIndex = 1;
-            label1.Text = "Bienvenido ADMIN";
+            label1.Text = "¡Bienvenido ADMIN!";
             // 
             // tabPage3
             // 
@@ -410,7 +413,7 @@
             // 
             // tabPage1
             // 
-            tabPage1.BackColor = Color.AliceBlue;
+            tabPage1.BackColor = SystemColors.GradientInactiveCaption;
             tabPage1.Controls.Add(label3);
             tabPage1.Controls.Add(label2);
             tabPage1.Location = new Point(4, 42);
@@ -452,12 +455,26 @@
             tabControl1.Size = new Size(1140, 353);
             tabControl1.TabIndex = 2;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 60F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Image = Properties.Resources.admin_panel_settings_20dp_255290_FILL0_wght600_GRAD0_opsz24;
+            label4.Location = new Point(1010, 47);
+            label4.Name = "label4";
+            label4.Size = new Size(138, 133);
+            label4.TabIndex = 3;
+            label4.Text = "   ";
+            // 
             // Form_Inicio_Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1179, 540);
+            Controls.Add(label4);
             Controls.Add(tabControl1);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -522,5 +539,6 @@
         private ToolStripMenuItem shippersToolStripMenuItem;
         private ToolStripMenuItem territoriesToolStripMenuItem;
         private ToolStripMenuItem regionToolStripMenuItem;
+        private Label label4;
     }
 }

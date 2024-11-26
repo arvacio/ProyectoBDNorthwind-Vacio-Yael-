@@ -61,8 +61,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.AliceBlue;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.AliceBlue;
             label1.Location = new Point(160, 116);
             label1.Name = "label1";
             label1.Size = new Size(148, 38);
@@ -72,8 +73,9 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.AliceBlue;
+            label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.AliceBlue;
             label2.Location = new Point(124, 261);
             label2.Name = "label2";
             label2.Size = new Size(212, 38);
@@ -107,8 +109,9 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = Color.AliceBlue;
+            label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonHighlight;
             label3.Location = new Point(46, 36);
             label3.Name = "label3";
             label3.Size = new Size(357, 54);
@@ -120,7 +123,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            BackgroundImage = Properties.Resources.WhatsApp_Image_2024_11_22_at_2_11_24_AM;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura1;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(460, 504);
             Controls.Add(label3);
             Controls.Add(button2);

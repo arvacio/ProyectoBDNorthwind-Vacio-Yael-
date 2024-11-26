@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel2 = new Panel();
+            butModificar = new Button();
             boxEmployeeID = new ComboBox();
             boxCustomerID = new ComboBox();
             panel1 = new Panel();
@@ -83,6 +84,7 @@
             // panel2
             // 
             panel2.BackColor = Color.LightSkyBlue;
+            panel2.Controls.Add(butModificar);
             panel2.Controls.Add(boxEmployeeID);
             panel2.Controls.Add(boxCustomerID);
             panel2.Controls.Add(panel1);
@@ -118,6 +120,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(414, 688);
             panel2.TabIndex = 44;
+            // 
+            // butModificar
+            // 
+            butModificar.BackColor = SystemColors.ButtonHighlight;
+            butModificar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            butModificar.Location = new Point(22, 634);
+            butModificar.Name = "butModificar";
+            butModificar.Size = new Size(148, 45);
+            butModificar.TabIndex = 35;
+            butModificar.Text = "Modificar";
+            butModificar.UseVisualStyleBackColor = false;
+            butModificar.Click += butModificar_Click;
             // 
             // boxEmployeeID
             // 
@@ -170,7 +184,7 @@
             // 
             butEliminarOrders.BackColor = SystemColors.ButtonHighlight;
             butEliminarOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            butEliminarOrders.Location = new Point(119, 634);
+            butEliminarOrders.Location = new Point(229, 634);
             butEliminarOrders.Name = "butEliminarOrders";
             butEliminarOrders.Size = new Size(148, 45);
             butEliminarOrders.TabIndex = 31;
@@ -198,7 +212,7 @@
             butGuardarOrders.Name = "butGuardarOrders";
             butGuardarOrders.Size = new Size(148, 45);
             butGuardarOrders.TabIndex = 29;
-            butGuardarOrders.Text = "Guardar/Modificar";
+            butGuardarOrders.Text = "Guardar";
             butGuardarOrders.UseVisualStyleBackColor = false;
             butGuardarOrders.Click += butGuardarOrders_Click;
             // 
@@ -557,6 +571,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura;
             ClientSize = new Size(1498, 743);
             Controls.Add(panel2);
             Controls.Add(panelP);
@@ -626,5 +641,6 @@
         private Panel panel1;
         private ComboBox boxEmployeeID;
         private ComboBox boxCustomerID;
+        private Button butModificar;
     }
 }

@@ -302,6 +302,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura;
             ClientSize = new Size(989, 777);
             Controls.Add(panel2);
             Controls.Add(panel3);

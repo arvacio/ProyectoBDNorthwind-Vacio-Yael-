@@ -463,7 +463,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.GradientInactiveCaption;
+            panel1.BackColor = Color.Transparent;
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
@@ -661,6 +661,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura;
             ClientSize = new Size(1050, 860);
             Controls.Add(dataGridViewEmployees);
             Controls.Add(panel1);

@@ -99,26 +99,29 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         private void butGuardarOrders_Click(object sender, EventArgs e)
         {
             Orders orders = new Orders();
+            try
+            {
+                orders.CustomerID = Convert.ToString(boxCustomerID.SelectedValue);
+                orders.EmployeeID = Convert.ToInt32(boxEmployeeID.SelectedValue);
 
-            orders.CustomerID = Convert.ToString(boxCustomerID.SelectedValue);
-            orders.EmployeeID = Convert.ToInt32(boxEmployeeID.SelectedValue);
+                DateTime sD = dtpOrderDate.Value;
+                DateTime sD1 = dtpRequiredDate.Value;
+                DateTime sD2 = dtpShippedDate.Value;
 
-            DateTime sD = dtpOrderDate.Value;
-            DateTime sD1 = dtpRequiredDate.Value;
-            DateTime sD2 = dtpShippedDate.Value;
+                orders.OrderDate = sD.ToString("yyyy-MM-dd");
+                orders.RequiredDate = sD1.ToString("yyyy-MM-dd");
+                orders.ShippedDate = sD2.ToString("yyyy-MM-dd");
 
-            orders.OrderDate = sD.ToString("yyyy-MM-dd");
-            orders.RequiredDate = sD1.ToString("yyyy-MM-dd");
-            orders.ShippedDate = sD2.ToString("yyyy-MM-dd");
-
-            orders.ShipVia = Convert.ToInt32(txtShipVia.Text);
-            orders.Freight = Convert.ToDecimal(txtFreight.Text);
-            orders.ShipName = txtShipName.Text;
-            orders.ShipAddress = txtShipAddress.Text;
-            orders.ShipCity = txtShipCity.Text;
-            orders.ShipRegion = txtShipRegion.Text;
-            orders.ShipPostalCode = txtShipPostalCode.Text;
-            orders.ShipCountry = txtShipCountry.Text;
+                orders.ShipVia = Convert.ToInt32(txtShipVia.Text);
+                orders.Freight = Convert.ToDecimal(txtFreight.Text);
+                orders.ShipName = txtShipName.Text;
+                orders.ShipAddress = txtShipAddress.Text;
+                orders.ShipCity = txtShipCity.Text;
+                orders.ShipRegion = txtShipRegion.Text;
+                orders.ShipPostalCode = txtShipPostalCode.Text;
+                orders.ShipCountry = txtShipCountry.Text;
+            }
+            catch { MessageBox.Show("Datos Invalidos"); }
 
             if (dataGridViewOrders.SelectedRows.Count == 1)
             {
@@ -127,17 +130,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
                 if (id != null)
                 {
-                    orders.OrderID = id;
-                    int result = OrdersDAL.ModificarOrders(orders);
-
-                    if (result > 0)
-                    {
-                        MessageBox.Show("Exito al Modificar");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al Modificar");
-                    }
+                    MessageBox.Show("No es posible modificar ya que hay una orden seleccionada");
                 }
             }
 
@@ -148,6 +141,8 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
                 if (result > 0)
                 {
                     MessageBox.Show("Exito al Guardar");
+                    FormProductsToOrders formProductsToOrders = new FormProductsToOrders();
+                    formProductsToOrders.Show();
                 }
             }
             refreshPantallaOrders();
@@ -395,8 +390,64 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             txtBuscarOrders.ForeColor = Color.Black;
         }
 
+        private void butModificar_Click(object sender, EventArgs e)
+        {
+                Orders orders = new Orders();
+                try
+                {
+                    orders.CustomerID = Convert.ToString(boxCustomerID.SelectedValue);
+                    orders.EmployeeID = Convert.ToInt32(boxEmployeeID.SelectedValue);
 
+                    DateTime sD = dtpOrderDate.Value;
+                    DateTime sD1 = dtpRequiredDate.Value;
+                    DateTime sD2 = dtpShippedDate.Value;
 
+                    orders.OrderDate = sD.ToString("yyyy-MM-dd");
+                    orders.RequiredDate = sD1.ToString("yyyy-MM-dd");
+                    orders.ShippedDate = sD2.ToString("yyyy-MM-dd");
 
+                    orders.ShipVia = Convert.ToInt32(txtShipVia.Text);
+                    orders.Freight = Convert.ToDecimal(txtFreight.Text);
+                    orders.ShipName = txtShipName.Text;
+                    orders.ShipAddress = txtShipAddress.Text;
+                    orders.ShipCity = txtShipCity.Text;
+                    orders.ShipRegion = txtShipRegion.Text;
+                    orders.ShipPostalCode = txtShipPostalCode.Text;
+                    orders.ShipCountry = txtShipCountry.Text;
+                }
+                catch { MessageBox.Show("Datos Invalidos"); }
+
+                if (dataGridViewOrders.SelectedRows.Count == 1)
+                {
+
+                    int id = Convert.ToInt32(dataGridViewOrders.CurrentRow.Cells["OrderID"].Value);
+
+                    if (id != null)
+                    {
+                        orders.OrderID = id;
+                        int result = OrdersDAL.ModificarOrders(orders);
+
+                        if (result > 0)
+                        {
+                            MessageBox.Show("Exito al Modificar");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al Modificar");
+                        }
+                    }
+                }
+
+                else
+                {
+                MessageBox.Show("Selecciona la Orden a Modificar");
+                }
+                refreshPantallaOrders();
+        }
+
+        public string TextBoxValue
+        {
+            get { return txtOrderID.Text; }
+        }
     }
 }

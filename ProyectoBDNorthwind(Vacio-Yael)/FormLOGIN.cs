@@ -19,7 +19,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "ADMIN" && txtContraseña.Text == "0000")
+            if (txtUsuario.Text == "" && txtContraseña.Text == "")
             {
                 this.Hide();
                 Form_Inicio_Admin form_Inicio_Admin = new Form_Inicio_Admin();

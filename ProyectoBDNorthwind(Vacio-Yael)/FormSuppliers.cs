@@ -563,6 +563,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // FormSuppliers
             // 
             BackColor = SystemColors.GradientInactiveCaption;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura;
             ClientSize = new Size(1492, 770);
             Controls.Add(panel2);
             Controls.Add(panelP);

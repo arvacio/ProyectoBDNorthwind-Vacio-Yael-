@@ -92,19 +92,20 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             boxOrderID.BackColor = SystemColors.Menu;
             boxOrderID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boxOrderID.FormattingEnabled = true;
-            boxOrderID.Location = new Point(210, 56);
+            boxOrderID.Location = new Point(233, 56);
             boxOrderID.Name = "boxOrderID";
             boxOrderID.Size = new Size(112, 36);
             boxOrderID.TabIndex = 42;
+            boxOrderID.SelectedIndexChanged += boxOrderID_SelectedIndexChanged;
             // 
             // boxProductID
             // 
             boxProductID.BackColor = SystemColors.Menu;
             boxProductID.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             boxProductID.FormattingEnabled = true;
-            boxProductID.Location = new Point(210, 111);
+            boxProductID.Location = new Point(168, 109);
             boxProductID.Name = "boxProductID";
-            boxProductID.Size = new Size(112, 36);
+            boxProductID.Size = new Size(177, 36);
             boxProductID.TabIndex = 41;
             // 
             // label2
@@ -121,17 +122,17 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(45, 111);
+            label1.Location = new Point(24, 110);
             label1.Name = "label1";
-            label1.Size = new Size(129, 31);
+            label1.Size = new Size(105, 31);
             label1.TabIndex = 39;
-            label1.Text = "ProductID:";
+            label1.Text = "Product:";
             // 
             // label32
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label32.Location = new Point(46, 57);
+            label32.Location = new Point(25, 56);
             label32.Name = "label32";
             label32.Size = new Size(105, 31);
             label32.TabIndex = 1;
@@ -362,6 +363,7 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
             // FormOrderDetails
             // 
             BackColor = SystemColors.GradientInactiveCaption;
+            BackgroundImage = Properties.Resources.fondo_azul_para_textura;
             ClientSize = new Size(1362, 770);
             Controls.Add(panel3);
             Controls.Add(panel4);
@@ -477,11 +479,15 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             OrderDetails orderDetails = new OrderDetails();
 
-            orderDetails.OrderID = Convert.ToInt32(boxOrderID.SelectedValue);
-            orderDetails.ProductID = Convert.ToInt32(boxProductID.SelectedValue);
-            orderDetails.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
-            orderDetails.Quantity = Convert.ToInt32(txtQuantity.Text);
-            orderDetails.Discount = float.Parse(txtQuantity.Text);
+            try
+            {
+                orderDetails.OrderID = Convert.ToInt32(boxOrderID.SelectedValue);
+                orderDetails.ProductID = Convert.ToInt32(boxProductID.SelectedValue);
+                orderDetails.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
+                orderDetails.Quantity = Convert.ToInt32(txtQuantity.Text);
+                orderDetails.Discount = Convert.ToSingle(txtDiscount.Text);
+            }
+            catch { MessageBox.Show("Datos Invalidos"); }
 
             if (dataGridViewOrderDetails.SelectedRows.Count == 1)
             {
@@ -661,6 +667,11 @@ namespace ProyectoBDNorthwind_Vacio_Yael_
         {
             txtBuscarOrderDetails.Text = "";
             txtBuscarOrderDetails.ForeColor = Color.Black;
+        }
+
+        private void boxOrderID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
